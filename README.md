@@ -1,4 +1,4 @@
-# Prettier SQL
+# Prettier SQL [![VSCode](https://img.shields.io/visual-studio-marketplace/v/inferrinizzard.prettier-sql-vscode?label=vscode)](https://marketplace.visualstudio.com/items?itemName=inferrinizzard.prettier-sql-vscode)
 
 Formats SQL files using the [`sql-formatter`](https://github.com/sql-formatter-org/sql-formatter) library
 
