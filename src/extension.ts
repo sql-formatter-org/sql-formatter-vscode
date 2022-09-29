@@ -11,14 +11,14 @@ import {
 
 const getConfigs = (
   settings: vscode.WorkspaceConfiguration,
-  formattingOptions: vscode.FormattingOptions | { tabSize: number; insertSpaces: boolean },
+  formattingOptions: vscode.FormattingOptions | { tabSize?: number; insertSpaces?: boolean },
   language: SqlLanguage
 ): Partial<FormatOptions> => {
   const ignoreTabSettings = settings.get<boolean>('ignoreTabSettings');
   const { tabSize, insertSpaces } = ignoreTabSettings // override tab settings if ignoreTabSettings is true
     ? {
-        tabSize: settings.get<number>('tabSizeOverride')!,
-        insertSpaces: settings.get<boolean>('insertSpacesOverride')!,
+        tabSize: settings.get<number>('tabSizeOverride'),
+        insertSpaces: settings.get<boolean>('insertSpacesOverride'),
       }
     : formattingOptions;
 
@@ -105,8 +105,8 @@ export function activate(context: vscode.ExtensionContext) {
       // get tab settings from workspace
       const workspaceConfig = vscode.workspace.getConfiguration('editor');
       const tabOptions = {
-        tabSize: workspaceConfig.get<number>('tabSize')!,
-        insertSpaces: workspaceConfig.get<boolean>('insertSpaces')!,
+        tabSize: workspaceConfig.get<number>('tabSize'),
+        insertSpaces: workspaceConfig.get<boolean>('insertSpaces'),
       };
 
       const formatConfigs = getConfigs(settings, tabOptions, formatterLanguage);
