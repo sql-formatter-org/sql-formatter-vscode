@@ -103,10 +103,10 @@ export function activate(context: vscode.ExtensionContext) {
       const extensionSettings = vscode.workspace.getConfiguration('Prettier-SQL');
 
       // get tab settings from workspace
-      const workspaceConfig = vscode.workspace.getConfiguration('editor');
+      const editorSettings = vscode.workspace.getConfiguration('editor');
       const tabOptions = {
-        tabSize: workspaceConfig.get<number>('tabSize'),
-        insertSpaces: workspaceConfig.get<boolean>('insertSpaces'),
+        tabSize: editorSettings.get<number>('tabSize'),
+        insertSpaces: editorSettings.get<boolean>('insertSpaces'),
       };
 
       const formatConfigs = getConfigs(extensionSettings, tabOptions, formatterLanguage);
