@@ -35,7 +35,7 @@ const getConfigs = (
 const getIndentationConfig = (
   extensionSettings: vscode.WorkspaceConfiguration,
   formattingOptions: Partial<vscode.FormattingOptions>
-) => {
+): Partial<FormatOptions> => {
   // override tab settings if ignoreTabSettings is true
   if (extensionSettings.get<boolean>('ignoreTabSettings')) {
     return {
