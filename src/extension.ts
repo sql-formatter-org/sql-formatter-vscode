@@ -50,6 +50,14 @@ const getIndentationConfig = (
   }
 };
 
+const getFormattingOptionsFromEditorConfig = () => {
+  const editorSettings = vscode.workspace.getConfiguration('editor');
+  return {
+    tabSize: editorSettings.get<number>('tabSize'),
+    insertSpaces: editorSettings.get<boolean>('insertSpaces'),
+  };
+};
+
 export function activate(context: vscode.ExtensionContext) {
   const formatProvider = (language: SqlLanguage) => ({
     provideDocumentFormattingEdits(
@@ -110,14 +118,11 @@ export function activate(context: vscode.ExtensionContext) {
 
       const extensionSettings = vscode.workspace.getConfiguration('Prettier-SQL');
 
-      // get tab settings from workspace
-      const editorSettings = vscode.workspace.getConfiguration('editor');
-      const tabOptions = {
-        tabSize: editorSettings.get<number>('tabSize'),
-        insertSpaces: editorSettings.get<boolean>('insertSpaces'),
-      };
-
-      const formatConfigs = getConfigs(extensionSettings, tabOptions, formatterLanguage);
+      const formatConfigs = getConfigs(
+        extensionSettings,
+        getFormattingOptionsFromEditorConfig(),
+        formatterLanguage
+      );
 
       const editor = vscode.window.activeTextEditor;
       try {
