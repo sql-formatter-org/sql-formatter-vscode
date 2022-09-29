@@ -141,7 +141,7 @@
         },
         "Prettier-SQL.tabSizeOverride": {
           "type": "number",
-          "default": 4,
+          "default": 2,
           "minimum": 1,
           "markdownDescription": "Override for `tabSize` if `#Prettier-SQL.ignoreTabSettings#` is active"
         },
