@@ -11,25 +11,15 @@ import {
 
 const getConfigs = (
   extensionSettings: vscode.WorkspaceConfiguration,
-  formattingOptions: vscode.FormattingOptions | { tabSize?: number; insertSpaces?: boolean },
+  formattingOptions: { tabSize?: number; insertSpaces?: boolean },
   language: SqlLanguage
 ): Partial<FormatOptions> => {
-  const ignoreTabSettings = extensionSettings.get<boolean>('ignoreTabSettings');
-  const { tabSize, insertSpaces } = ignoreTabSettings // override tab settings if ignoreTabSettings is true
-    ? {
-        tabSize: extensionSettings.get<number>('tabSizeOverride'),
-        insertSpaces: extensionSettings.get<boolean>('insertSpacesOverride'),
-      }
-    : formattingOptions;
-
-  // build format configs from settings
   return {
     language:
       language === 'sql' // override default SQL language mode if SQLFlavourOverride is set
         ? extensionSettings.get<SqlLanguage>('SQLFlavourOverride') ?? 'sql'
         : language,
-    tabWidth: tabSize,
-    useTabs: !insertSpaces,
+    ...getIndentationConfig(extensionSettings, formattingOptions),
     keywordCase: extensionSettings.get<KeywordCase>('keywordCase'),
     indentStyle: extensionSettings.get<IndentStyle>('indentStyle'),
     logicalOperatorNewline: extensionSettings.get<LogicalOperatorNewline>('logicalOperatorNewline'),
@@ -40,6 +30,24 @@ const getConfigs = (
     denseOperators: extensionSettings.get<boolean>('denseOperators'),
     newlineBeforeSemicolon: extensionSettings.get<boolean>('newlineBeforeSemicolon'),
   };
+};
+
+const getIndentationConfig = (
+  extensionSettings: vscode.WorkspaceConfiguration,
+  formattingOptions: { tabSize?: number; insertSpaces?: boolean }
+) => {
+  // override tab settings if ignoreTabSettings is true
+  if (extensionSettings.get<boolean>('ignoreTabSettings')) {
+    return {
+      tabWidth: extensionSettings.get<number>('tabSizeOverride'),
+      useTabs: !extensionSettings.get<boolean>('insertSpacesOverride'),
+    };
+  } else {
+    return {
+      tabWidth: formattingOptions.tabSize,
+      useTabs: !formattingOptions.insertSpaces,
+    };
+  }
 };
 
 export function activate(context: vscode.ExtensionContext) {
