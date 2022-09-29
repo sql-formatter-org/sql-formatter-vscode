@@ -6,13 +6,14 @@ import {
   IndentStyle,
   CommaPosition,
   LogicalOperatorNewline,
+  FormatOptions,
 } from 'sql-formatter';
 
 const getConfigs = (
   settings: vscode.WorkspaceConfiguration,
   formattingOptions: vscode.FormattingOptions | { tabSize: number; insertSpaces: boolean },
   language: SqlLanguage
-) => {
+): Partial<FormatOptions> => {
   const ignoreTabSettings = settings.get<boolean>('ignoreTabSettings');
   const { tabSize, insertSpaces } = ignoreTabSettings // override tab settings if ignoreTabSettings is true
     ? {
@@ -20,15 +21,15 @@ const getConfigs = (
         insertSpaces: settings.get<boolean>('insertSpacesOverride')!,
       }
     : formattingOptions;
-  const indent = insertSpaces ? ' '.repeat(tabSize) : '\t';
 
   // build format configs from settings
-  const formatConfigs = {
+  return {
     language:
       language === 'sql' // override default SQL language mode if SQLFlavourOverride is set
         ? settings.get<SqlLanguage>('SQLFlavourOverride') ?? 'sql'
         : language,
-    indent,
+    tabWidth: tabSize,
+    useTabs: !insertSpaces,
     keywordCase: settings.get<KeywordCase>('keywordCase'),
     indentStyle: settings.get<IndentStyle>('indentStyle'),
     logicalOperatorNewline: settings.get<LogicalOperatorNewline>('logicalOperatorNewline'),
@@ -39,8 +40,6 @@ const getConfigs = (
     denseOperators: settings.get<boolean>('denseOperators'),
     newlineBeforeSemicolon: settings.get<boolean>('newlineBeforeSemicolon'),
   };
-
-  return formatConfigs;
 };
 
 export function activate(context: vscode.ExtensionContext) {
