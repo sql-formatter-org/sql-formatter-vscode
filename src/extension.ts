@@ -11,7 +11,7 @@ import {
 
 const getConfigs = (
   extensionSettings: vscode.WorkspaceConfiguration,
-  formattingOptions: { tabSize?: number; insertSpaces?: boolean },
+  formattingOptions: Partial<vscode.FormattingOptions>,
   language: SqlLanguage
 ): Partial<FormatOptions> => {
   return {
@@ -34,7 +34,7 @@ const getConfigs = (
 
 const getIndentationConfig = (
   extensionSettings: vscode.WorkspaceConfiguration,
-  formattingOptions: { tabSize?: number; insertSpaces?: boolean }
+  formattingOptions: Partial<vscode.FormattingOptions>
 ) => {
   // override tab settings if ignoreTabSettings is true
   if (extensionSettings.get<boolean>('ignoreTabSettings')) {
@@ -50,7 +50,7 @@ const getIndentationConfig = (
   }
 };
 
-const getFormattingOptionsFromEditorConfig = () => {
+const getFormattingOptionsFromEditorConfig = (): Partial<vscode.FormattingOptions> => {
   const editorSettings = vscode.workspace.getConfiguration('editor');
   return {
     tabSize: editorSettings.get<number>('tabSize'),
