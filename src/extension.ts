@@ -46,10 +46,10 @@ export function activate(context: vscode.ExtensionContext) {
   const formatProvider = (language: SqlLanguage) => ({
     provideDocumentFormattingEdits(
       document: vscode.TextDocument,
-      options: vscode.FormattingOptions
+      formattingOptions: vscode.FormattingOptions
     ): vscode.TextEdit[] {
       const settings = vscode.workspace.getConfiguration('Prettier-SQL');
-      const formatConfigs = getConfigs(settings, options, language);
+      const formatConfigs = getConfigs(settings, formattingOptions, language);
 
       // extract all lines from document
       const lines = [...new Array(document.lineCount)].map((_, i) => document.lineAt(i).text);
