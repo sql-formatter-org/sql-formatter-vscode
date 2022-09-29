@@ -48,8 +48,8 @@ export function activate(context: vscode.ExtensionContext) {
       document: vscode.TextDocument,
       formattingOptions: vscode.FormattingOptions
     ): vscode.TextEdit[] {
-      const settings = vscode.workspace.getConfiguration('Prettier-SQL');
-      const formatConfigs = getConfigs(settings, formattingOptions, language);
+      const extensionSettings = vscode.workspace.getConfiguration('Prettier-SQL');
+      const formatConfigs = getConfigs(extensionSettings, formattingOptions, language);
 
       // extract all lines from document
       const lines = [...new Array(document.lineCount)].map((_, i) => document.lineAt(i).text);
@@ -68,7 +68,7 @@ export function activate(context: vscode.ExtensionContext) {
             document.positionAt(0),
             document.lineAt(document.lineCount - 1).range.end
           ),
-          text + (settings.get('trailingNewline') ? '\n' : '')
+          text + (extensionSettings.get('trailingNewline') ? '\n' : '')
         ),
       ];
     },
