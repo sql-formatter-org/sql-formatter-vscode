@@ -10,15 +10,15 @@ import {
 } from 'sql-formatter';
 
 const getConfigs = (
-  settings: vscode.WorkspaceConfiguration,
+  extensionSettings: vscode.WorkspaceConfiguration,
   formattingOptions: vscode.FormattingOptions | { tabSize?: number; insertSpaces?: boolean },
   language: SqlLanguage
 ): Partial<FormatOptions> => {
-  const ignoreTabSettings = settings.get<boolean>('ignoreTabSettings');
+  const ignoreTabSettings = extensionSettings.get<boolean>('ignoreTabSettings');
   const { tabSize, insertSpaces } = ignoreTabSettings // override tab settings if ignoreTabSettings is true
     ? {
-        tabSize: settings.get<number>('tabSizeOverride'),
-        insertSpaces: settings.get<boolean>('insertSpacesOverride'),
+        tabSize: extensionSettings.get<number>('tabSizeOverride'),
+        insertSpaces: extensionSettings.get<boolean>('insertSpacesOverride'),
       }
     : formattingOptions;
 
@@ -26,19 +26,19 @@ const getConfigs = (
   return {
     language:
       language === 'sql' // override default SQL language mode if SQLFlavourOverride is set
-        ? settings.get<SqlLanguage>('SQLFlavourOverride') ?? 'sql'
+        ? extensionSettings.get<SqlLanguage>('SQLFlavourOverride') ?? 'sql'
         : language,
     tabWidth: tabSize,
     useTabs: !insertSpaces,
-    keywordCase: settings.get<KeywordCase>('keywordCase'),
-    indentStyle: settings.get<IndentStyle>('indentStyle'),
-    logicalOperatorNewline: settings.get<LogicalOperatorNewline>('logicalOperatorNewline'),
-    tabulateAlias: settings.get<boolean>('tabulateAlias'),
-    commaPosition: settings.get<CommaPosition>('commaPosition'),
-    expressionWidth: settings.get<number>('expressionWidth'),
-    linesBetweenQueries: settings.get<number>('linesBetweenQueries'),
-    denseOperators: settings.get<boolean>('denseOperators'),
-    newlineBeforeSemicolon: settings.get<boolean>('newlineBeforeSemicolon'),
+    keywordCase: extensionSettings.get<KeywordCase>('keywordCase'),
+    indentStyle: extensionSettings.get<IndentStyle>('indentStyle'),
+    logicalOperatorNewline: extensionSettings.get<LogicalOperatorNewline>('logicalOperatorNewline'),
+    tabulateAlias: extensionSettings.get<boolean>('tabulateAlias'),
+    commaPosition: extensionSettings.get<CommaPosition>('commaPosition'),
+    expressionWidth: extensionSettings.get<number>('expressionWidth'),
+    linesBetweenQueries: extensionSettings.get<number>('linesBetweenQueries'),
+    denseOperators: extensionSettings.get<boolean>('denseOperators'),
+    newlineBeforeSemicolon: extensionSettings.get<boolean>('newlineBeforeSemicolon'),
   };
 };
 
@@ -100,7 +100,7 @@ export function activate(context: vscode.ExtensionContext) {
       const documentLanguage = vscode.window.activeTextEditor?.document.languageId ?? 'sql';
       const formatterLanguage = languages[documentLanguage] ?? 'sql';
 
-      const settings = vscode.workspace.getConfiguration('Prettier-SQL');
+      const extensionSettings = vscode.workspace.getConfiguration('Prettier-SQL');
 
       // get tab settings from workspace
       const workspaceConfig = vscode.workspace.getConfiguration('editor');
@@ -109,7 +109,7 @@ export function activate(context: vscode.ExtensionContext) {
         insertSpaces: workspaceConfig.get<boolean>('insertSpaces'),
       };
 
-      const formatConfigs = getConfigs(settings, tabOptions, formatterLanguage);
+      const formatConfigs = getConfigs(extensionSettings, tabOptions, formatterLanguage);
 
       const editor = vscode.window.activeTextEditor;
       try {
