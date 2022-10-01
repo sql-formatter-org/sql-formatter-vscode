@@ -11,7 +11,7 @@ import {
 
 const getConfigs = (
   extensionSettings: vscode.WorkspaceConfiguration,
-  formattingOptions: Partial<vscode.FormattingOptions>,
+  formattingOptions: vscode.FormattingOptions,
   language: SqlLanguage
 ): Partial<FormatOptions> => {
   return {
@@ -34,7 +34,7 @@ const getConfigs = (
 
 const getIndentationConfig = (
   extensionSettings: vscode.WorkspaceConfiguration,
-  formattingOptions: Partial<vscode.FormattingOptions>
+  formattingOptions: vscode.FormattingOptions
 ): Partial<FormatOptions> => {
   // override tab settings if ignoreTabSettings is true
   if (extensionSettings.get<boolean>('ignoreTabSettings')) {
@@ -118,8 +118,8 @@ export function activate(context: vscode.ExtensionContext) {
       const formatConfigs = getConfigs(
         extensionSettings,
         {
-          // According to types, these editor.options properties can also be strings,
-          // but according to docs, the string value is only applicable when setting,
+          // According to types, these editor.options properties can also be strings or undefined,
+          // but according to docs, the string|undefined value is only applicable when setting,
           // so it should be safe to cast them.
           tabSize: editor.options.tabSize as number,
           insertSpaces: editor.options.insertSpaces as boolean,
