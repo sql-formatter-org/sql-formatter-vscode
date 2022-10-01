@@ -136,12 +136,12 @@
         },
         "Prettier-SQL.ignoreTabSettings": {
           "type": "boolean",
-          "default": true,
+          "default": false,
           "markdownDescription": "Ignore user and workplace settings for `tabSize` and `insertSpaces` (uses `#Prettier-SQL.tabSizeOverride#` and `#Prettier-SQL.insertSpacesOverride#`)?"
         },
         "Prettier-SQL.tabSizeOverride": {
           "type": "number",
-          "default": 4,
+          "default": 2,
           "minimum": 1,
           "markdownDescription": "Override for `tabSize` if `#Prettier-SQL.ignoreTabSettings#` is active"
         },

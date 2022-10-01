@@ -6,51 +6,58 @@ import {
   IndentStyle,
   CommaPosition,
   LogicalOperatorNewline,
+  FormatOptions,
 } from 'sql-formatter';
 
 const getConfigs = (
-  settings: vscode.WorkspaceConfiguration,
-  formattingOptions: vscode.FormattingOptions | { tabSize: number; insertSpaces: boolean },
+  extensionSettings: vscode.WorkspaceConfiguration,
+  formattingOptions: vscode.FormattingOptions,
   language: SqlLanguage
-) => {
-  const ignoreTabSettings = settings.get<boolean>('ignoreTabSettings');
-  const { tabSize, insertSpaces } = ignoreTabSettings // override tab settings if ignoreTabSettings is true
-    ? {
-        tabSize: settings.get<number>('tabSizeOverride')!,
-        insertSpaces: settings.get<boolean>('insertSpacesOverride')!,
-      }
-    : formattingOptions;
-  const indent = insertSpaces ? ' '.repeat(tabSize) : '\t';
-
-  // build format configs from settings
-  const formatConfigs = {
+): Partial<FormatOptions> => {
+  return {
     language:
       language === 'sql' // override default SQL language mode if SQLFlavourOverride is set
-        ? settings.get<SqlLanguage>('SQLFlavourOverride') ?? 'sql'
+        ? extensionSettings.get<SqlLanguage>('SQLFlavourOverride') ?? 'sql'
         : language,
-    indent,
-    keywordCase: settings.get<KeywordCase>('keywordCase'),
-    indentStyle: settings.get<IndentStyle>('indentStyle'),
-    logicalOperatorNewline: settings.get<LogicalOperatorNewline>('logicalOperatorNewline'),
-    tabulateAlias: settings.get<boolean>('tabulateAlias'),
-    commaPosition: settings.get<CommaPosition>('commaPosition'),
-    expressionWidth: settings.get<number>('expressionWidth'),
-    linesBetweenQueries: settings.get<number>('linesBetweenQueries'),
-    denseOperators: settings.get<boolean>('denseOperators'),
-    newlineBeforeSemicolon: settings.get<boolean>('newlineBeforeSemicolon'),
+    ...getIndentationConfig(extensionSettings, formattingOptions),
+    keywordCase: extensionSettings.get<KeywordCase>('keywordCase'),
+    indentStyle: extensionSettings.get<IndentStyle>('indentStyle'),
+    logicalOperatorNewline: extensionSettings.get<LogicalOperatorNewline>('logicalOperatorNewline'),
+    tabulateAlias: extensionSettings.get<boolean>('tabulateAlias'),
+    commaPosition: extensionSettings.get<CommaPosition>('commaPosition'),
+    expressionWidth: extensionSettings.get<number>('expressionWidth'),
+    linesBetweenQueries: extensionSettings.get<number>('linesBetweenQueries'),
+    denseOperators: extensionSettings.get<boolean>('denseOperators'),
+    newlineBeforeSemicolon: extensionSettings.get<boolean>('newlineBeforeSemicolon'),
   };
+};
 
-  return formatConfigs;
+const getIndentationConfig = (
+  extensionSettings: vscode.WorkspaceConfiguration,
+  formattingOptions: vscode.FormattingOptions
+): Partial<FormatOptions> => {
+  // override tab settings if ignoreTabSettings is true
+  if (extensionSettings.get<boolean>('ignoreTabSettings')) {
+    return {
+      tabWidth: extensionSettings.get<number>('tabSizeOverride'),
+      useTabs: !extensionSettings.get<boolean>('insertSpacesOverride'),
+    };
+  } else {
+    return {
+      tabWidth: formattingOptions.tabSize,
+      useTabs: !formattingOptions.insertSpaces,
+    };
+  }
 };
 
 export function activate(context: vscode.ExtensionContext) {
   const formatProvider = (language: SqlLanguage) => ({
     provideDocumentFormattingEdits(
       document: vscode.TextDocument,
-      options: vscode.FormattingOptions
+      formattingOptions: vscode.FormattingOptions
     ): vscode.TextEdit[] {
-      const settings = vscode.workspace.getConfiguration('Prettier-SQL');
-      const formatConfigs = getConfigs(settings, options, language);
+      const extensionSettings = vscode.workspace.getConfiguration('Prettier-SQL');
+      const formatConfigs = getConfigs(extensionSettings, formattingOptions, language);
 
       // extract all lines from document
       const lines = [...new Array(document.lineCount)].map((_, i) => document.lineAt(i).text);
@@ -69,7 +76,7 @@ export function activate(context: vscode.ExtensionContext) {
             document.positionAt(0),
             document.lineAt(document.lineCount - 1).range.end
           ),
-          text + (settings.get('trailingNewline') ? '\n' : '')
+          text + (extensionSettings.get('trailingNewline') ? '\n' : '')
         ),
       ];
     },
@@ -98,24 +105,31 @@ export function activate(context: vscode.ExtensionContext) {
   const formatSelectionCommand = vscode.commands.registerCommand(
     'prettier-sql-vscode.format-selection',
     () => {
-      const documentLanguage = vscode.window.activeTextEditor?.document.languageId ?? 'sql';
+      const editor = vscode.window.activeTextEditor;
+      if (!editor) {
+        return;
+      }
+
+      const documentLanguage = editor.document.languageId ?? 'sql';
       const formatterLanguage = languages[documentLanguage] ?? 'sql';
 
-      const settings = vscode.workspace.getConfiguration('Prettier-SQL');
+      const extensionSettings = vscode.workspace.getConfiguration('Prettier-SQL');
 
-      // get tab settings from workspace
-      const workspaceConfig = vscode.workspace.getConfiguration('editor');
-      const tabOptions = {
-        tabSize: workspaceConfig.get<number>('tabSize')!,
-        insertSpaces: workspaceConfig.get<boolean>('insertSpaces')!,
-      };
+      const formatConfigs = getConfigs(
+        extensionSettings,
+        {
+          // According to types, these editor.options properties can also be strings or undefined,
+          // but according to docs, the string|undefined value is only applicable when setting,
+          // so it should be safe to cast them.
+          tabSize: editor.options.tabSize as number,
+          insertSpaces: editor.options.insertSpaces as boolean,
+        },
+        formatterLanguage
+      );
 
-      const formatConfigs = getConfigs(settings, tabOptions, formatterLanguage);
-
-      const editor = vscode.window.activeTextEditor;
       try {
         // format and replace each selection
-        editor?.edit(editBuilder => {
+        editor.edit(editBuilder => {
           editor.selections.forEach(sel =>
             editBuilder.replace(sel, format(editor.document.getText(sel), formatConfigs))
           );
