@@ -50,14 +50,6 @@ const getIndentationConfig = (
   }
 };
 
-const getFormattingOptionsFromEditorConfig = (): Partial<vscode.FormattingOptions> => {
-  const editorSettings = vscode.workspace.getConfiguration('editor');
-  return {
-    tabSize: editorSettings.get<number>('tabSize'),
-    insertSpaces: editorSettings.get<boolean>('insertSpaces'),
-  };
-};
-
 export function activate(context: vscode.ExtensionContext) {
   const formatProvider = (language: SqlLanguage) => ({
     provideDocumentFormattingEdits(
@@ -125,7 +117,13 @@ export function activate(context: vscode.ExtensionContext) {
 
       const formatConfigs = getConfigs(
         extensionSettings,
-        getFormattingOptionsFromEditorConfig(),
+        {
+          // According to types, these editor.options properties can also be strings,
+          // but according to docs, the string value is only applicable when setting,
+          // so it should be safe to cast them.
+          tabSize: editor.options.tabSize as number,
+          insertSpaces: editor.options.insertSpaces as boolean,
+        },
         formatterLanguage
       );
 
