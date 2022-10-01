@@ -113,7 +113,12 @@ export function activate(context: vscode.ExtensionContext) {
   const formatSelectionCommand = vscode.commands.registerCommand(
     'prettier-sql-vscode.format-selection',
     () => {
-      const documentLanguage = vscode.window.activeTextEditor?.document.languageId ?? 'sql';
+      const editor = vscode.window.activeTextEditor;
+      if (!editor) {
+        return;
+      }
+
+      const documentLanguage = editor.document.languageId ?? 'sql';
       const formatterLanguage = languages[documentLanguage] ?? 'sql';
 
       const extensionSettings = vscode.workspace.getConfiguration('Prettier-SQL');
@@ -124,10 +129,9 @@ export function activate(context: vscode.ExtensionContext) {
         formatterLanguage
       );
 
-      const editor = vscode.window.activeTextEditor;
       try {
         // format and replace each selection
-        editor?.edit(editBuilder => {
+        editor.edit(editBuilder => {
           editor.selections.forEach(sel =>
             editBuilder.replace(sel, format(editor.document.getText(sel), formatConfigs))
           );
