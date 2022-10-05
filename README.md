@@ -15,6 +15,7 @@ Supports the following SQL Dialects:
 - PostgresQL
 - Amazon Redshift
 - SingleStoreDB
+- Snowflake
 - Spark
 - SQLite
 - Trino (Presto)

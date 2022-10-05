@@ -89,6 +89,7 @@ export function activate(context: vscode.ExtensionContext) {
     'postgres': 'postgresql',
     'hql': 'hive',
     'hive-sql': 'hive',
+    'snowflake': 'snowflake',
     'sql-bigquery': 'bigquery',
     'sqlite': 'sqlite',
   };
