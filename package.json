@@ -71,7 +71,7 @@
     "vsce:publish": "vsce publish"
   },
   "dependencies": {
-    "sql-formatter": "^10.6.0"
+    "sql-formatter": "^11.0.2"
   },
   "devDependencies": {
     "@types/glob": "^7.1.4",
