@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## [1.4.0] - 2022-10-05
+
+- updated `sql-formatter` to v11.x
+- added `snowflake` as new supported dialect
+
 ## [1.3.1] - 2022-09-07
 
 - updated `sql-formatter` to v10.6.x
