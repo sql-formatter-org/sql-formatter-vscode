@@ -53,7 +53,7 @@ Use the FORMATTING template if it is an issue related the formatting of the SQL,
 
 `Prettier-SQL.denseOperators`: Whether to strip whitespace around operators such as + or >=
 
-`Prettier-SQL.semicolonNewline`: Whether to place semicolon on its own line or on previous line
+`Prettier-SQL.newlineBeforeSemicolon`: Whether to place semicolon on its own line or on previous line
 
 ## Publish Flow
 
