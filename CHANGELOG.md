@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## [1.5.0] - 2022-11-18
+
+- updated `sql-formatter` to v12.x
+
 ## [1.4.0] - 2022-10-05
 
 - updated `sql-formatter` to v11.x
