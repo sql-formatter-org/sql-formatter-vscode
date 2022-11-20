@@ -6,14 +6,14 @@ import {
   IndentStyle,
   CommaPosition,
   LogicalOperatorNewline,
-  FormatOptions,
+  FormatOptionsWithLanguage,
 } from 'sql-formatter';
 
 const getConfigs = (
   extensionSettings: vscode.WorkspaceConfiguration,
   formattingOptions: vscode.FormattingOptions,
   language: SqlLanguage
-): Partial<FormatOptions> => {
+): Partial<FormatOptionsWithLanguage> => {
   return {
     language:
       language === 'sql' // override default SQL language mode if SQLFlavourOverride is set
@@ -35,7 +35,7 @@ const getConfigs = (
 const getIndentationConfig = (
   extensionSettings: vscode.WorkspaceConfiguration,
   formattingOptions: vscode.FormattingOptions
-): Partial<FormatOptions> => {
+): Partial<FormatOptionsWithLanguage> => {
   // override tab settings if ignoreTabSettings is true
   if (extensionSettings.get<boolean>('ignoreTabSettings')) {
     return {
