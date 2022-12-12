@@ -1,3 +1,5 @@
+<a href='https://github.com/sql-formatter-org/sql-formatter'><img src="https://raw.githubusercontent.com/sql-formatter-org/sql-formatter/master/static/prettier-sql-clean.svg" width="128"/></a>
+
 # Prettier SQL [![VSCode](https://img.shields.io/visual-studio-marketplace/v/inferrinizzard.prettier-sql-vscode?label=vscode)](https://marketplace.visualstudio.com/items?itemName=inferrinizzard.prettier-sql-vscode)
 
 Formats SQL files using the [`sql-formatter`](https://github.com/sql-formatter-org/sql-formatter) library
