@@ -54,13 +54,3 @@ Use the FORMATTING template if it is an issue related the formatting of the SQL,
 `Prettier-SQL.denseOperators`: Whether to strip whitespace around operators such as + or >=
 
 `Prettier-SQL.newlineBeforeSemicolon`: Whether to place semicolon on its own line or on previous line
-
-## Publish Flow
-
-To publish the VSCode Extension:
-
-- ensure that the CHANGELOG and `package.json` are up to date before bumping version
-- ensure that the version does not conflict with a previous extension version
-- run the following commands in the `vscode/` dir (requires auth with Microsoft Dev account + access to VSCode team)
-  - `yarn vsce:package`
-  - `yarn vsce:publish` (can also be done via browser)
