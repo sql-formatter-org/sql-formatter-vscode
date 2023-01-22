@@ -1932,10 +1932,10 @@ slash@^3.0.0:
   resolved "https://registry.yarnpkg.com/slash/-/slash-3.0.0.tgz#6539be870c165adbd5240220dbe361f1bc4d4634"
   integrity sha512-g9Q1haeby36OSStwb4ntCGGGaKsaVSjQ68fBxoQcutl5fS1vuY18H3wSt3jFyFtrkx+Kz0V1G85A4MyAdDMi2Q==
 
-sql-formatter@^12.0.2:
-  version "12.0.2"
-  resolved "https://registry.yarnpkg.com/sql-formatter/-/sql-formatter-12.0.2.tgz#024a2c1c2742559dad406773767be3b5dc0a9e28"
-  integrity sha512-KL1LPndBRs+NDD70SaLML9aFKEgFFU/pGIT7qQb4OmPtvjn6J9/8V/QqdKrH9TnCg6c4AXEhbZMS/8nkuSoHQw==
+sql-formatter@^12.0.6:
+  version "12.0.6"
+  resolved "https://registry.yarnpkg.com/sql-formatter/-/sql-formatter-12.0.6.tgz#9cc9375ad465f1d30fb622cb8b0e6a6391c47c45"
+  integrity sha512-aCbpsa5FKZmjwZ6ETkdf8RkaYN28p73WM/rshz9NLtOz0X/NWs2ariFzCEQ+OFdmlT5AUHGTJPhXuzRYjyWiBg==
   dependencies:
     argparse "^2.0.1"
     nearley "^2.20.1"
