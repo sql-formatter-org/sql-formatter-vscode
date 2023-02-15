@@ -56,6 +56,7 @@
     "onCommand:prettier-sql-vscode.format-selection"
   ],
   "main": "./out/extension.js",
+  "browser": "./out/extension.js",
   "scripts": {
     "clean": "rimraf out .vscode-test",
     "compile": "tsc --project ./tsconfig.json",
@@ -69,7 +70,8 @@
     "pretest": "yarn run compile && yarn run lint",
     "test": "node ./out/test/runTest.js",
     "vsce:package": "vsce package",
-    "vsce:publish": "vsce publish"
+    "vsce:publish": "vsce publish",
+    "run-in-browser": "vscode-test-web --browserType=chromium --open-devtools --extensionDevelopmentPath=. ."
   },
   "dependencies": {
     "sql-formatter": "^12.0.2"
@@ -82,6 +84,7 @@
     "@typescript-eslint/eslint-plugin": "^5.1.0",
     "@typescript-eslint/parser": "^5.1.0",
     "@vscode/test-electron": "^1.6.2",
+    "@vscode/test-web": "^0.0.34",
     "esbuild": "^0.14.8",
     "eslint": "^8.1.0",
     "glob": "^7.1.7",
