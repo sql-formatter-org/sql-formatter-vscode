@@ -7,7 +7,9 @@ import {
   CommaPosition,
   LogicalOperatorNewline,
   FormatOptionsWithLanguage,
+  FormatOptions
 } from 'sql-formatter';
+import { ParamTypes } from 'sql-formatter/lib/src/lexer/TokenizerOptions';
 
 const getConfigs = (
   extensionSettings: vscode.WorkspaceConfiguration,
@@ -29,6 +31,7 @@ const getConfigs = (
     linesBetweenQueries: extensionSettings.get<number>('linesBetweenQueries'),
     denseOperators: extensionSettings.get<boolean>('denseOperators'),
     newlineBeforeSemicolon: extensionSettings.get<boolean>('newlineBeforeSemicolon'),
+    paramTypes: extensionSettings.get<ParamTypes>('paramTypes')
   };
 };
 
