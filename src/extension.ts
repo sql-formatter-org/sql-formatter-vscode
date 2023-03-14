@@ -9,7 +9,8 @@ import {
   FormatOptionsWithLanguage,
   FormatOptions
 } from 'sql-formatter';
-import { ParamTypes } from 'sql-formatter/lib/src/lexer/TokenizerOptions';
+
+type ParamTypes = FormatOptions["paramTypes"];
 
 const getConfigs = (
   extensionSettings: vscode.WorkspaceConfiguration,
