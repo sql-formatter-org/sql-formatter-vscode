@@ -230,6 +230,11 @@
           "type": "boolean",
           "default": false,
           "markdownDescription": "Whether to place semicolon on its own line or on previous line"
+        },
+        "Prettier-SQL.trailingNewline": {
+          "type": "boolean",
+          "default": false,
+          "markdownDescription": "Whether to ensure there is a trailing newline at the end of the file"
         }
       }
     }
