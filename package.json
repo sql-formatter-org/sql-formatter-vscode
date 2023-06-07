@@ -230,6 +230,10 @@
           "type": "boolean",
           "default": false,
           "markdownDescription": "Whether to place semicolon on its own line or on previous line"
+        },
+        "Prettier-SQL.paramTypes": {
+          "type": "object",
+          "markdownDescription": "Specifies parameter placeholders types to support."
         }
       }
     }
