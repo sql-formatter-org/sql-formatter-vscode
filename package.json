@@ -235,6 +235,10 @@
           "type": "boolean",
           "default": false,
           "markdownDescription": "Whether to ensure there is a trailing newline at the end of the file"
+        },
+        "Prettier-SQL.paramTypes": {
+          "type": "object",
+          "markdownDescription": "Specifies parameter placeholders types to support."
         }
       }
     }
