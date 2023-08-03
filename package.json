@@ -15,7 +15,7 @@
     "Tomoyuki Saoi <tomoyuki.saoi@hq-hq.co.jp>"
   ],
   "license": "MIT",
-  "icon": "prettier-sql-clean.png",
+  "icon": "sql-formatter-icon.png",
   "engines": {
     "vscode": "^1.63.0"
   },
