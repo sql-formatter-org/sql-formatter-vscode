@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## [2.0.1] - 2023-08-03
+
+- Updated documentation
+
 ## [2.0.0] - 2023-08-03
 
 - Renamed the extension from "Prettier SQL VSCode" to "SQL Formatter VSCode"
