@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## [2.0.2] - 2023-08-03
+
+- Upgraded `sql-formatter` to v12.2.4
+
 ## [2.0.1] - 2023-08-03
 
 - Updated documentation
