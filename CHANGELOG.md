@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [2.0.0] - 2023-08-03
+
+- Renamed the extension from "Prettier SQL VSCode" to "SQL Formatter VSCode"
+- Added `paramTypes` configuration option
+- Upgraded `sql-formatter` to v12.2.0
+
 ## [1.6.0] - 2023-02-15
 
 - added support for browser extension
