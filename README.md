@@ -2,7 +2,9 @@
 
 # SQL Formatter VSCode [![version number](https://img.shields.io/visual-studio-marketplace/v/ReneSaarsoo.sql-formatter-vsc?label=vscode)](https://marketplace.visualstudio.com/items?itemName=ReneSaarsoo.prettier-sql-vsc)
 
-Formats SQL files using the [`sql-formatter`](https://github.com/sql-formatter-org/sql-formatter) library
+Formats SQL files using the [`sql-formatter`](https://github.com/sql-formatter-org/sql-formatter) library.
+
+**Note:** _This extension is a direct successor of **Prettier SQL VSCode** extension, which is no more maintained._
 
 Supports the following SQL Dialects:
 
