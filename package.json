@@ -4,9 +4,16 @@
   "description": "Official VSCode Extension of SQL Formatter library",
   "version": "1.6.0",
   "publisher": "inferrinizzard",
-  "author": {
-    "name": "inferrinizzard"
-  },
+  "contributors": [
+    "@benfdking",
+    "inferrinizzard <inferrinizzard@gmail.com>",
+    "Justin Carrus <carrus.justin@gmail.com>",
+    "Rene Saarsoo <nene@triin.net>",
+    "Sean Song <mail@seansong.dev>",
+    "@the-red",
+    "Tomoyuki Saoi <tomoyuki.saoi@hq-hq.co.jp>",
+    "@verhovsky"
+  ],
   "license": "MIT",
   "icon": "prettier-sql-clean.png",
   "engines": {
