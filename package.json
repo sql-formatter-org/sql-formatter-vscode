@@ -1,7 +1,7 @@
 {
-  "name": "prettier-sql-vscode",
-  "displayName": "Prettier SQL VSCode",
-  "description": "VSCode Extension to format SQL files",
+  "name": "sql-formatter-vscode",
+  "displayName": "SQL Formatter VSCode",
+  "description": "Official VSCode Extension of SQL Formatter library",
   "version": "1.6.0",
   "publisher": "inferrinizzard",
   "author": {
@@ -53,7 +53,7 @@
   ],
   "activationEvents": [
     "onStartupFinished",
-    "onCommand:prettier-sql-vscode.format-selection"
+    "onCommand:sql-formatter-vscode.format-selection"
   ],
   "main": "./out/extension.js",
   "browser": "./out/extension.js",
@@ -108,13 +108,13 @@
     ],
     "commands": [
       {
-        "title": "Format Selection (Prettier-SQL)",
+        "title": "Format Selection (SQL Formatter VSCode)",
         "shortTitle": "Format SQL",
-        "command": "prettier-sql-vscode.format-selection"
+        "command": "sql-formatter-vscode.format-selection"
       }
     ],
     "configuration": {
-      "title": "Prettier SQL",
+      "title": "SQL Formatter VSCode",
       "properties": {
         "Prettier-SQL.SQLFlavourOverride": {
           "type": "string",

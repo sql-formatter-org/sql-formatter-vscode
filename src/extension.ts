@@ -108,7 +108,7 @@ export function activate(context: vscode.ExtensionContext) {
   );
 
   const formatSelectionCommand = vscode.commands.registerCommand(
-    'prettier-sql-vscode.format-selection',
+    'sql-formatter-vscode.format-selection',
     () => {
       const editor = vscode.window.activeTextEditor;
       if (!editor) {
