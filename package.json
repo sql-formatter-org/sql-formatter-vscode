@@ -2,7 +2,7 @@
   "name": "sql-formatter-vscode",
   "displayName": "SQL Formatter VSCode",
   "description": "Official VSCode Extension of SQL Formatter library",
-  "version": "1.6.0",
+  "version": "2.0.0",
   "publisher": "ReneSaarsoo",
   "contributors": [
     "Ben (benfdking)",
