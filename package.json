@@ -3,7 +3,7 @@
   "displayName": "SQL Formatter VSCode",
   "description": "Official VSCode Extension of SQL Formatter library",
   "version": "1.6.0",
-  "publisher": "inferrinizzard",
+  "publisher": "ReneSaarsoo",
   "contributors": [
     "Ben (benfdking)",
     "Boris Verkhovskiy <boris.verk@gmail.com>",
