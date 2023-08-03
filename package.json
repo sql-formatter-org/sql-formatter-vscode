@@ -59,8 +59,7 @@
     "tsql"
   ],
   "activationEvents": [
-    "onStartupFinished",
-    "onCommand:sql-formatter-vscode.format-selection"
+    "onStartupFinished"
   ],
   "main": "./out/extension.js",
   "browser": "./out/extension.js",
