@@ -25,12 +25,6 @@ Supports the following SQL Dialects:
 - Trino (Presto)
 - TransactSQL
 
-## Issues
-
-Please report issues here: https://github.com/sql-formatter-org/sql-formatter/issues
-
-Use the FORMATTING template if it is an issue related the formatting of the SQL, otherwise, please use the VSCODE template for issues with running the VSCode Extension
-
 ## Configuration
 
 `SQL-Formatter-VSCode.SQLFlavourOverride`: Uses custom SQL Flavour to format `sql` files. Use this if you are using the Microsoft PostgreSQL or MSSQL Extensions since they do not provide a new language ID for VSCode.
@@ -62,3 +56,9 @@ Use the FORMATTING template if it is an issue related the formatting of the SQL,
 `SQL-Formatter-VSCode.trailingNewline`: Whether to ensure there is a trailing newline at the end of the file
 
 `SQL-Formatter-VSCode.paramTypes`: Specifies parameter placeholders types to support
+
+## Issues
+
+Please report issues here: https://github.com/sql-formatter-org/sql-formatter/issues
+
+Use the FORMATTING template if it is an issue related the formatting of the SQL, otherwise, please use the VSCODE template for issues with running the VSCode Extension
