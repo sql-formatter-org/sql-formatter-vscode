@@ -1,5 +1,5 @@
 {
-  "name": "sql-formatter-vscode",
+  "name": "sql-formatter-vsc",
   "displayName": "SQL Formatter VSCode",
   "description": "Official VSCode Extension of SQL Formatter library",
   "version": "2.0.0",
