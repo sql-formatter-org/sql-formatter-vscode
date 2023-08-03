@@ -2,7 +2,7 @@
 
 # SQL Formatter VSCode [![version number](https://img.shields.io/visual-studio-marketplace/v/ReneSaarsoo.sql-formatter-vsc?label=vscode)](https://marketplace.visualstudio.com/items?itemName=ReneSaarsoo.prettier-sql-vsc)
 
-Formats SQL files using the [`sql-formatter`](https://github.com/sql-formatter-org/sql-formatter) library.
+Formats SQL files using the [sql-formatter][] library.
 
 **Note:** _This extension is a direct successor of **Prettier SQL VSCode** extension, which is no more maintained._
 
@@ -57,8 +57,17 @@ Supports the following SQL Dialects:
 
 `SQL-Formatter-VSCode.paramTypes`: Specifies parameter placeholders types to support
 
-## Issues
+## Having a problem?
 
-Please report issues here: https://github.com/sql-formatter-org/sql-formatter/issues
+Please report issues to [SQL Formatter library Github page][issues].
 
-Use the FORMATTING template if it is an issue related the formatting of the SQL, otherwise, please use the VSCODE template for issues with running the VSCode Extension
+This extension and the sql-formatter libary share the same issue tracker,
+as the authors of both are the same and the bugs reported about the VSCode
+extension are really mostly bugs in the underlying formatter library.
+
+Don't worry about this difference though when reporting problems.
+But do [read the FAQ][faq] before filing your report.
+
+[sql-formatter]: https://github.com/sql-formatter-org/sql-formatter
+[issues]: https://github.com/sql-formatter-org/sql-formatter/issues
+[faq]: https://github.com/sql-formatter-org/sql-formatter#frequently-asked-questions
