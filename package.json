@@ -116,7 +116,7 @@
     "configuration": {
       "title": "SQL Formatter VSCode",
       "properties": {
-        "Prettier-SQL.SQLFlavourOverride": {
+        "SQL-Formatter-VSCode.SQLFlavourOverride": {
           "type": "string",
           "enum": [
             "sql",
@@ -139,23 +139,23 @@
           "default": "sql",
           "markdownDescription": "Formats `sql` files in another SQL Flavour when no VSCode Language exists, such as the Microsoft PostgreSQL & MSSQL Extensions"
         },
-        "Prettier-SQL.ignoreTabSettings": {
+        "SQL-Formatter-VSCode.ignoreTabSettings": {
           "type": "boolean",
           "default": false,
-          "markdownDescription": "Ignore user and workplace settings for `tabSize` and `insertSpaces` (uses `#Prettier-SQL.tabSizeOverride#` and `#Prettier-SQL.insertSpacesOverride#`)?"
+          "markdownDescription": "Ignore user and workplace settings for `tabSize` and `insertSpaces` (uses `#SQL-Formatter-VSCode.tabSizeOverride#` and `#SQL-Formatter-VSCode.insertSpacesOverride#`)?"
         },
-        "Prettier-SQL.tabSizeOverride": {
+        "SQL-Formatter-VSCode.tabSizeOverride": {
           "type": "number",
           "default": 2,
           "minimum": 1,
-          "markdownDescription": "Override for `tabSize` if `#Prettier-SQL.ignoreTabSettings#` is active"
+          "markdownDescription": "Override for `tabSize` if `#SQL-Formatter-VSCode.ignoreTabSettings#` is active"
         },
-        "Prettier-SQL.insertSpacesOverride": {
+        "SQL-Formatter-VSCode.insertSpacesOverride": {
           "type": "boolean",
           "default": true,
-          "markdownDescription": "Override for `insertSpaces` if `#Prettier-SQL.ignoreTabSettings#` is active"
+          "markdownDescription": "Override for `insertSpaces` if `#SQL-Formatter-VSCode.ignoreTabSettings#` is active"
         },
-        "Prettier-SQL.keywordCase": {
+        "SQL-Formatter-VSCode.keywordCase": {
           "type": "string",
           "enum": [
             "preserve",
@@ -165,7 +165,7 @@
           "default": "preserve",
           "markdownDescription": "Whether to print keywords in ALL CAPS, lowercase, or preserve existing"
         },
-        "Prettier-SQL.indentStyle": {
+        "SQL-Formatter-VSCode.indentStyle": {
           "type": "string",
           "enum": [
             "standard",
@@ -180,7 +180,7 @@
           "default": "standard",
           "markdownDescription": "Where to place keywords"
         },
-        "Prettier-SQL.logicalOperatorNewline": {
+        "SQL-Formatter-VSCode.logicalOperatorNewline": {
           "type": "string",
           "enum": [
             "before",
@@ -189,12 +189,12 @@
           "default": "before",
           "markdownDescription": "Whether to break before or after AND and OR"
         },
-        "Prettier-SQL.tabulateAlias": {
+        "SQL-Formatter-VSCode.tabulateAlias": {
           "type": "boolean",
           "default": false,
           "markdownDescription": "Whether to right-align aliases to the longest line in the SELECT clause"
         },
-        "Prettier-SQL.commaPosition": {
+        "SQL-Formatter-VSCode.commaPosition": {
           "type": "string",
           "enum": [
             "before",
@@ -209,34 +209,34 @@
           "default": "after",
           "markdownDescription": "Where to place commas for SELECT and GROUP BY clauses"
         },
-        "Prettier-SQL.expressionWidth": {
+        "SQL-Formatter-VSCode.expressionWidth": {
           "type": "integer",
           "default": 50,
           "minimum": 0,
           "markdownDescription": "Number of characters allowed in each line before breaking"
         },
-        "Prettier-SQL.linesBetweenQueries": {
+        "SQL-Formatter-VSCode.linesBetweenQueries": {
           "type": "integer",
           "default": 1,
           "minimum": 0,
           "markdownDescription": "How many newlines to place between each query / statement"
         },
-        "Prettier-SQL.denseOperators": {
+        "SQL-Formatter-VSCode.denseOperators": {
           "type": "boolean",
           "default": false,
           "markdownDescription": "Strip whitespace around operators such as + or >="
         },
-        "Prettier-SQL.newlineBeforeSemicolon": {
+        "SQL-Formatter-VSCode.newlineBeforeSemicolon": {
           "type": "boolean",
           "default": false,
           "markdownDescription": "Whether to place semicolon on its own line or on previous line"
         },
-        "Prettier-SQL.trailingNewline": {
+        "SQL-Formatter-VSCode.trailingNewline": {
           "type": "boolean",
           "default": false,
           "markdownDescription": "Whether to ensure there is a trailing newline at the end of the file"
         },
-        "Prettier-SQL.paramTypes": {
+        "SQL-Formatter-VSCode.paramTypes": {
           "type": "object",
           "markdownDescription": "Specifies parameter placeholders types to support."
         }

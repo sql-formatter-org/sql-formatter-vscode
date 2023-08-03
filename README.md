@@ -31,32 +31,32 @@ Use the FORMATTING template if it is an issue related the formatting of the SQL,
 
 ## Configuration
 
-`Prettier-SQL.SQLFlavourOverride`: Uses custom SQL Flavour to format `sql` files. Use this if you are using the Microsoft PostgreSQL or MSSQL Extensions since they do not provide a new language ID for VSCode.
+`SQL-Formatter-VSCode.SQLFlavourOverride`: Uses custom SQL Flavour to format `sql` files. Use this if you are using the Microsoft PostgreSQL or MSSQL Extensions since they do not provide a new language ID for VSCode.
 
-`Prettier-SQL.ignoreTabSettings`: Whether to ignore VSCode user/workspace settings for `tabSize` and `insertSpaces`
+`SQL-Formatter-VSCode.ignoreTabSettings`: Whether to ignore VSCode user/workspace settings for `tabSize` and `insertSpaces`
 
-`Prettier-SQL.tabSizeOverride`: Overrides `tabSize` if `Prettier-SQL.ignoreTabSettings` is enabled
+`SQL-Formatter-VSCode.tabSizeOverride`: Overrides `tabSize` if `SQL-Formatter-VSCode.ignoreTabSettings` is enabled
 
-`Prettier-SQL.insertSpacesOverride`: Overrides `insertSpaces` if `Prettier-SQL.ignoreTabSettings` is enabled
+`SQL-Formatter-VSCode.insertSpacesOverride`: Overrides `insertSpaces` if `SQL-Formatter-VSCode.ignoreTabSettings` is enabled
 
-`Prettier-SQL.keywordCase`: Whether to print keywords in ALL CAPS or lowercase
+`SQL-Formatter-VSCode.keywordCase`: Whether to print keywords in ALL CAPS or lowercase
 
-`Prettier-SQL.indentStyle`: Switched between standard keyword positioning vs maintaining a central space column
+`SQL-Formatter-VSCode.indentStyle`: Switched between standard keyword positioning vs maintaining a central space column
 
-`Prettier-SQL.logicalOperatorNewline`: Whether to break before or after AND and OR
+`SQL-Formatter-VSCode.logicalOperatorNewline`: Whether to break before or after AND and OR
 
-`Prettier-SQL.tabulateAlias`: Whether to right-align aliases to the longest line in the SELECT clause
+`SQL-Formatter-VSCode.tabulateAlias`: Whether to right-align aliases to the longest line in the SELECT clause
 
-`Prettier-SQL.commaPosition`: Where to place commas for SELECT and GROUP BY clauses
+`SQL-Formatter-VSCode.commaPosition`: Where to place commas for SELECT and GROUP BY clauses
 
-`Prettier-SQL.expressionWidth`: Number of characters allowed in each line before breaking
+`SQL-Formatter-VSCode.expressionWidth`: Number of characters allowed in each line before breaking
 
-`Prettier-SQL.linesBetweenQueries`: How many newlines to place between each query / statement
+`SQL-Formatter-VSCode.linesBetweenQueries`: How many newlines to place between each query / statement
 
-`Prettier-SQL.denseOperators`: Whether to strip whitespace around operators such as + or >=
+`SQL-Formatter-VSCode.denseOperators`: Whether to strip whitespace around operators such as + or >=
 
-`Prettier-SQL.newlineBeforeSemicolon`: Whether to place semicolon on its own line or on previous line
+`SQL-Formatter-VSCode.newlineBeforeSemicolon`: Whether to place semicolon on its own line or on previous line
 
-`Prettier-SQL.trailingNewline`: Whether to ensure there is a trailing newline at the end of the file
+`SQL-Formatter-VSCode.trailingNewline`: Whether to ensure there is a trailing newline at the end of the file
 
-`Prettier-SQL.paramTypes`: Specifies parameter placeholders types to support
+`SQL-Formatter-VSCode.paramTypes`: Specifies parameter placeholders types to support

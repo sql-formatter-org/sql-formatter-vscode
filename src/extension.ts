@@ -60,7 +60,7 @@ export function activate(context: vscode.ExtensionContext) {
       document: vscode.TextDocument,
       formattingOptions: vscode.FormattingOptions
     ): vscode.TextEdit[] {
-      const extensionSettings = vscode.workspace.getConfiguration('Prettier-SQL');
+      const extensionSettings = vscode.workspace.getConfiguration('SQL-Formatter-VSCode');
       const formatConfigs = getConfigs(extensionSettings, formattingOptions, language);
 
       // extract all lines from document
@@ -97,7 +97,7 @@ export function activate(context: vscode.ExtensionContext) {
     'sql-bigquery': 'bigquery',
     'sqlite': 'sqlite',
   };
-  // add Prettier-SQL as a format provider for each language
+  // add SQL-Formatter-VSCode as a format provider for each language
   Object.entries(languages).forEach(([vscodeLang, prettierLang]) =>
     context.subscriptions.push(
       vscode.languages.registerDocumentFormattingEditProvider(
@@ -118,7 +118,7 @@ export function activate(context: vscode.ExtensionContext) {
       const documentLanguage = editor.document.languageId ?? 'sql';
       const formatterLanguage = languages[documentLanguage] ?? 'sql';
 
-      const extensionSettings = vscode.workspace.getConfiguration('Prettier-SQL');
+      const extensionSettings = vscode.workspace.getConfiguration('SQL-Formatter-VSCode');
 
       const formatConfigs = getConfigs(
         extensionSettings,
