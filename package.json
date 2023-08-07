@@ -83,7 +83,7 @@
     "sql-formatter": "^12.2.4"
   },
   "devDependencies": {
-    "@types/glob": "^7.1.4",
+    "@types/glob": "^8.1.0",
     "@types/mocha": "^10.0.1",
     "@types/node": "16.x",
     "@types/vscode": "^1.63.0",
@@ -95,7 +95,7 @@
     "eslint": "^8.46.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-prettier": "^5.0.0",
-    "glob": "^7.1.7",
+    "glob": "^8.0.0",
     "mocha": "^10.2.0",
     "prettier": "^3.0.1",
     "typescript": "^5.1.6",
