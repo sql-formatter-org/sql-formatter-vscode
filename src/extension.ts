@@ -1,58 +1,6 @@
 import * as vscode from 'vscode';
-import {
-  format,
-  SqlLanguage,
-  KeywordCase,
-  IndentStyle,
-  CommaPosition,
-  LogicalOperatorNewline,
-  FormatOptionsWithLanguage,
-  FormatOptions,
-} from 'sql-formatter';
-
-type ParamTypes = FormatOptions['paramTypes'];
-
-const getConfigs = (
-  extensionSettings: vscode.WorkspaceConfiguration,
-  formattingOptions: vscode.FormattingOptions,
-  language: SqlLanguage,
-): Partial<FormatOptionsWithLanguage> => {
-  return {
-    language:
-      language === 'sql' // override default SQL language mode if SQLFlavourOverride is set
-        ? extensionSettings.get<SqlLanguage>('SQLFlavourOverride') ?? 'sql'
-        : language,
-    ...getIndentationConfig(extensionSettings, formattingOptions),
-    keywordCase: extensionSettings.get<KeywordCase>('keywordCase'),
-    indentStyle: extensionSettings.get<IndentStyle>('indentStyle'),
-    logicalOperatorNewline: extensionSettings.get<LogicalOperatorNewline>('logicalOperatorNewline'),
-    tabulateAlias: extensionSettings.get<boolean>('tabulateAlias'),
-    commaPosition: extensionSettings.get<CommaPosition>('commaPosition'),
-    expressionWidth: extensionSettings.get<number>('expressionWidth'),
-    linesBetweenQueries: extensionSettings.get<number>('linesBetweenQueries'),
-    denseOperators: extensionSettings.get<boolean>('denseOperators'),
-    newlineBeforeSemicolon: extensionSettings.get<boolean>('newlineBeforeSemicolon'),
-    paramTypes: extensionSettings.get<ParamTypes>('paramTypes'),
-  };
-};
-
-const getIndentationConfig = (
-  extensionSettings: vscode.WorkspaceConfiguration,
-  formattingOptions: vscode.FormattingOptions,
-): Partial<FormatOptionsWithLanguage> => {
-  // override tab settings if ignoreTabSettings is true
-  if (extensionSettings.get<boolean>('ignoreTabSettings')) {
-    return {
-      tabWidth: extensionSettings.get<number>('tabSizeOverride'),
-      useTabs: !extensionSettings.get<boolean>('insertSpacesOverride'),
-    };
-  } else {
-    return {
-      tabWidth: formattingOptions.tabSize,
-      useTabs: !formattingOptions.insertSpaces,
-    };
-  }
-};
+import { format, SqlLanguage } from 'sql-formatter';
+import { getConfigs } from './config';
 
 export function activate(context: vscode.ExtensionContext) {
   const formatProvider = (language: SqlLanguage) => ({
