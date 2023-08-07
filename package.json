@@ -92,7 +92,7 @@
     "@vscode/test-electron": "^1.6.2",
     "@vscode/test-web": "^0.0.34",
     "esbuild": "^0.14.8",
-    "eslint": "^8.1.0",
+    "eslint": "^8.46.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-prettier": "^5.0.0",
     "glob": "^7.1.7",
