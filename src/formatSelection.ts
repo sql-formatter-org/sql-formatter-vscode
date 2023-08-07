@@ -13,13 +13,7 @@ export function formatSelection() {
 
   const formatConfig = createConfig(
     extensionSettings,
-    {
-      // According to types, these editor.options properties can also be strings or undefined,
-      // but according to docs, the string|undefined value is only applicable when setting,
-      // so it should be safe to cast them.
-      tabSize: editor.options.tabSize as number,
-      insertSpaces: editor.options.insertSpaces as boolean,
-    },
+    editorFormattingOptions(editor),
     detectSqlDialect(editor),
   );
 
@@ -37,3 +31,11 @@ export function formatSelection() {
 
 const detectSqlDialect = (editor: vscode.TextEditor) =>
   sqlDialects[editor.document.languageId] ?? 'sql';
+
+const editorFormattingOptions = (editor: vscode.TextEditor) => ({
+  // According to types, these editor.options properties can also be strings or undefined,
+  // but according to docs, the string|undefined value is only applicable when setting,
+  // so it should be safe to cast them.
+  tabSize: editor.options.tabSize as number,
+  insertSpaces: editor.options.insertSpaces as boolean,
+});
