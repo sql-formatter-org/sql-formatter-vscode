@@ -14,12 +14,9 @@ export function activate(context: vscode.ExtensionContext) {
     ),
   );
 
-  const formatSelectionCommand = vscode.commands.registerCommand(
-    'sql-formatter-vscode.format-selection',
-    formatSelection,
+  context.subscriptions.push(
+    vscode.commands.registerCommand('sql-formatter-vscode.format-selection', formatSelection),
   );
-
-  context.subscriptions.push(formatSelectionCommand);
 }
 
 export function deactivate() {}
