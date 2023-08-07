@@ -3,7 +3,7 @@ import { format, SqlLanguage } from 'sql-formatter';
 import { createConfig } from './config';
 
 export function activate(context: vscode.ExtensionContext) {
-  const formatProvider = (language: SqlLanguage) => ({
+  const createFormattingProvider = (language: SqlLanguage) => ({
     provideDocumentFormattingEdits(
       document: vscode.TextDocument,
       formattingOptions: vscode.FormattingOptions,
@@ -50,7 +50,7 @@ export function activate(context: vscode.ExtensionContext) {
     context.subscriptions.push(
       vscode.languages.registerDocumentFormattingEditProvider(
         vscodeLang,
-        formatProvider(prettierLang),
+        createFormattingProvider(prettierLang),
       ),
     ),
   );
