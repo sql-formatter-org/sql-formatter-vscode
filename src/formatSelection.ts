@@ -10,18 +10,16 @@ export function formatSelection() {
   }
 
   try {
-    // format and replace each selection
-    editor.edit(editBuilder => {
-      editor.selections.forEach(sel =>
-        editBuilder.replace(
-          sel,
-          format(editor.document.getText(sel), createConfigForEditor(editor)),
-        ),
-      );
-    });
+    replaceEachSelection(editor, text => format(text, createConfigForEditor(editor)));
   } catch (e) {
     vscode.window.showErrorMessage('Unable to format SQL:\n' + e);
   }
+}
+
+function replaceEachSelection(editor: vscode.TextEditor, fn: (code: string) => string) {
+  editor.edit(editBuilder => {
+    editor.selections.forEach(sel => editBuilder.replace(sel, fn(editor.document.getText(sel))));
+  });
 }
 
 const createConfigForEditor = (editor: vscode.TextEditor) =>
