@@ -12,11 +12,9 @@ export class SqlFormattingProvider implements vscode.DocumentFormattingEditProvi
     const extensionSettings = vscode.workspace.getConfiguration('SQL-Formatter-VSCode');
     const formatConfig = createConfig(extensionSettings, formattingOptions, this.language);
 
-    // extract all lines from document
-    const lines = [...new Array(document.lineCount)].map((_, i) => document.lineAt(i).text);
     let text;
     try {
-      text = format(lines.join('\n'), formatConfig);
+      text = format(this.getAllText(document), formatConfig);
     } catch (e) {
       vscode.window.showErrorMessage('Unable to format SQL:\n' + e);
       return [];
@@ -29,5 +27,10 @@ export class SqlFormattingProvider implements vscode.DocumentFormattingEditProvi
         text + (extensionSettings.get('trailingNewline') ? '\n' : ''),
       ),
     ];
+  }
+
+  private getAllText(document: vscode.TextDocument) {
+    // extract all lines from document
+    return [...new Array(document.lineCount)].map((_, i) => document.lineAt(i).text).join('\n');
   }
 }
