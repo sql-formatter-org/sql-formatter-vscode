@@ -11,7 +11,7 @@ import {
 
 type ParamTypes = FormatOptions['paramTypes'];
 
-export const getConfigs = (
+export const createConfig = (
   extensionSettings: vscode.WorkspaceConfiguration,
   formattingOptions: vscode.FormattingOptions,
   language: SqlLanguage,
@@ -21,7 +21,7 @@ export const getConfigs = (
       language === 'sql' // override default SQL language mode if SQLFlavourOverride is set
         ? extensionSettings.get<SqlLanguage>('SQLFlavourOverride') ?? 'sql'
         : language,
-    ...getIndentationConfig(extensionSettings, formattingOptions),
+    ...createIndentationConfig(extensionSettings, formattingOptions),
     keywordCase: extensionSettings.get<KeywordCase>('keywordCase'),
     indentStyle: extensionSettings.get<IndentStyle>('indentStyle'),
     logicalOperatorNewline: extensionSettings.get<LogicalOperatorNewline>('logicalOperatorNewline'),
@@ -35,7 +35,7 @@ export const getConfigs = (
   };
 };
 
-const getIndentationConfig = (
+const createIndentationConfig = (
   extensionSettings: vscode.WorkspaceConfiguration,
   formattingOptions: vscode.FormattingOptions,
 ): Partial<FormatOptionsWithLanguage> => {

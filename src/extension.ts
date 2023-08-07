@@ -1,6 +1,6 @@
 import * as vscode from 'vscode';
 import { format, SqlLanguage } from 'sql-formatter';
-import { getConfigs } from './config';
+import { createConfig } from './config';
 
 export function activate(context: vscode.ExtensionContext) {
   const formatProvider = (language: SqlLanguage) => ({
@@ -9,13 +9,13 @@ export function activate(context: vscode.ExtensionContext) {
       formattingOptions: vscode.FormattingOptions,
     ): vscode.TextEdit[] {
       const extensionSettings = vscode.workspace.getConfiguration('SQL-Formatter-VSCode');
-      const formatConfigs = getConfigs(extensionSettings, formattingOptions, language);
+      const formatConfig = createConfig(extensionSettings, formattingOptions, language);
 
       // extract all lines from document
       const lines = [...new Array(document.lineCount)].map((_, i) => document.lineAt(i).text);
       let text;
       try {
-        text = format(lines.join('\n'), formatConfigs);
+        text = format(lines.join('\n'), formatConfig);
       } catch (e) {
         vscode.window.showErrorMessage('Unable to format SQL:\n' + e);
         return [];
@@ -68,7 +68,7 @@ export function activate(context: vscode.ExtensionContext) {
 
       const extensionSettings = vscode.workspace.getConfiguration('SQL-Formatter-VSCode');
 
-      const formatConfigs = getConfigs(
+      const formatConfig = createConfig(
         extensionSettings,
         {
           // According to types, these editor.options properties can also be strings or undefined,
@@ -84,7 +84,7 @@ export function activate(context: vscode.ExtensionContext) {
         // format and replace each selection
         editor.edit(editBuilder => {
           editor.selections.forEach(sel =>
-            editBuilder.replace(sel, format(editor.document.getText(sel), formatConfigs)),
+            editBuilder.replace(sel, format(editor.document.getText(sel), formatConfig)),
           );
         });
       } catch (e) {
