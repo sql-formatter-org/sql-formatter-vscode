@@ -10,13 +10,9 @@ export class SqlFormattingProvider implements vscode.DocumentFormattingEditProvi
     formattingOptions: vscode.FormattingOptions,
   ): vscode.TextEdit[] {
     try {
-      // replace document with formatted text
       return [
         vscode.TextEdit.replace(
-          new vscode.Range(
-            document.positionAt(0),
-            document.lineAt(document.lineCount - 1).range.end,
-          ),
+          this.fullDocumentRange(document),
           this.formatText(this.getAllText(document), formattingOptions),
         ),
       ];
@@ -29,6 +25,13 @@ export class SqlFormattingProvider implements vscode.DocumentFormattingEditProvi
   private getAllText(document: vscode.TextDocument) {
     // extract all lines from document
     return [...new Array(document.lineCount)].map((_, i) => document.lineAt(i).text).join('\n');
+  }
+
+  private fullDocumentRange(document: vscode.TextDocument): vscode.Range {
+    return new vscode.Range(
+      document.positionAt(0),
+      document.lineAt(document.lineCount - 1).range.end,
+    );
   }
 
   private formatText(text: string, formattingOptions: vscode.FormattingOptions) {
