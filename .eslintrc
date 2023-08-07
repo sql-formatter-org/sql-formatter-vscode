@@ -1,7 +1,7 @@
 {
   "parser": "@typescript-eslint/parser",
   "parserOptions": { "project": "./tsconfig.json", "ecmaVersion": 6, "sourceType": "module" },
-  "extends": ["eslint:recommended", "prettier"],
+  "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended", "prettier"],
   "plugins": ["@typescript-eslint", "prettier"],
   "globals": {
     "suite": true
@@ -24,7 +24,8 @@
     ],
     "@typescript-eslint/semi": "error",
     "@typescript-eslint/no-non-null-assertion": "error",
-    "@typescript-eslint/consistent-type-exports": "error"
+    "@typescript-eslint/consistent-type-exports": "error",
+    "@typescript-eslint/no-empty-function": "off"
   },
   "env": {
     "jest": true,
