@@ -9,9 +9,6 @@ export function formatSelection() {
     return;
   }
 
-  const documentLanguage = editor.document.languageId ?? 'sql';
-  const formatterLanguage = sqlDialects[documentLanguage] ?? 'sql';
-
   const extensionSettings = vscode.workspace.getConfiguration('SQL-Formatter-VSCode');
 
   const formatConfig = createConfig(
@@ -23,7 +20,7 @@ export function formatSelection() {
       tabSize: editor.options.tabSize as number,
       insertSpaces: editor.options.insertSpaces as boolean,
     },
-    formatterLanguage,
+    detectSqlDialect(editor),
   );
 
   try {
@@ -37,3 +34,6 @@ export function formatSelection() {
     vscode.window.showErrorMessage('Unable to format SQL:\n' + e);
   }
 }
+
+const detectSqlDialect = (editor: vscode.TextEditor) =>
+  sqlDialects[editor.document.languageId] ?? 'sql';
