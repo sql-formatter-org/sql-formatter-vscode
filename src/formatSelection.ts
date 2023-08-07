@@ -9,23 +9,27 @@ export function formatSelection() {
     return;
   }
 
-  const formatConfig = createConfig(
-    vscode.workspace.getConfiguration('SQL-Formatter-VSCode'),
-    editorFormattingOptions(editor),
-    detectSqlDialect(editor),
-  );
-
   try {
     // format and replace each selection
     editor.edit(editBuilder => {
       editor.selections.forEach(sel =>
-        editBuilder.replace(sel, format(editor.document.getText(sel), formatConfig)),
+        editBuilder.replace(
+          sel,
+          format(editor.document.getText(sel), createConfigForEditor(editor)),
+        ),
       );
     });
   } catch (e) {
     vscode.window.showErrorMessage('Unable to format SQL:\n' + e);
   }
 }
+
+const createConfigForEditor = (editor: vscode.TextEditor) =>
+  createConfig(
+    vscode.workspace.getConfiguration('SQL-Formatter-VSCode'),
+    editorFormattingOptions(editor),
+    detectSqlDialect(editor),
+  );
 
 const detectSqlDialect = (editor: vscode.TextEditor) =>
   sqlDialects[editor.document.languageId] ?? 'sql';
