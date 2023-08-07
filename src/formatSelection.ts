@@ -9,10 +9,8 @@ export function formatSelection() {
     return;
   }
 
-  const extensionSettings = vscode.workspace.getConfiguration('SQL-Formatter-VSCode');
-
   const formatConfig = createConfig(
-    extensionSettings,
+    vscode.workspace.getConfiguration('SQL-Formatter-VSCode'),
     editorFormattingOptions(editor),
     detectSqlDialect(editor),
   );
