@@ -1,22 +1,12 @@
 import * as vscode from 'vscode';
-import { format, SqlLanguage } from 'sql-formatter';
+import { format } from 'sql-formatter';
 import { createConfig } from './config';
 import { SqlFormattingProvider } from './SqlFormattingProvider';
+import { sqlDialects } from './sqlDialects';
 
 export function activate(context: vscode.ExtensionContext) {
-  const languages: { [lang: string]: SqlLanguage } = {
-    'sql': 'sql',
-    'plsql': 'plsql',
-    'mysql': 'mysql',
-    'postgres': 'postgresql',
-    'hql': 'hive',
-    'hive-sql': 'hive',
-    'snowflake': 'snowflake',
-    'sql-bigquery': 'bigquery',
-    'sqlite': 'sqlite',
-  };
-  // add SQL-Formatter-VSCode as a format provider for each language
-  Object.entries(languages).forEach(([vscodeLang, prettierLang]) =>
+  // add SQL-Formatter-VSCode as a format provider for each SQL dialect
+  Object.entries(sqlDialects).forEach(([vscodeLang, prettierLang]) =>
     context.subscriptions.push(
       vscode.languages.registerDocumentFormattingEditProvider(
         vscodeLang,
@@ -34,7 +24,7 @@ export function activate(context: vscode.ExtensionContext) {
       }
 
       const documentLanguage = editor.document.languageId ?? 'sql';
-      const formatterLanguage = languages[documentLanguage] ?? 'sql';
+      const formatterLanguage = sqlDialects[documentLanguage] ?? 'sql';
 
       const extensionSettings = vscode.workspace.getConfiguration('SQL-Formatter-VSCode');
 
