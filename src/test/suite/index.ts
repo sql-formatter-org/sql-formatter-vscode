@@ -30,9 +30,8 @@ export default function run(): Promise<void> {
             c();
           }
         });
-      } catch (testErr) {
-        console.error(testErr);
-        e(testErr);
+      } catch (err) {
+        e(err);
       }
     });
   });
