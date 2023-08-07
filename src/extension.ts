@@ -1,39 +1,9 @@
 import * as vscode from 'vscode';
 import { format, SqlLanguage } from 'sql-formatter';
 import { createConfig } from './config';
+import { SqlFormattingProvider } from './SqlFormattingProvider';
 
 export function activate(context: vscode.ExtensionContext) {
-  const createFormattingProvider = (language: SqlLanguage) => ({
-    provideDocumentFormattingEdits(
-      document: vscode.TextDocument,
-      formattingOptions: vscode.FormattingOptions,
-    ): vscode.TextEdit[] {
-      const extensionSettings = vscode.workspace.getConfiguration('SQL-Formatter-VSCode');
-      const formatConfig = createConfig(extensionSettings, formattingOptions, language);
-
-      // extract all lines from document
-      const lines = [...new Array(document.lineCount)].map((_, i) => document.lineAt(i).text);
-      let text;
-      try {
-        text = format(lines.join('\n'), formatConfig);
-      } catch (e) {
-        vscode.window.showErrorMessage('Unable to format SQL:\n' + e);
-        return [];
-      }
-
-      // replace document with formatted text
-      return [
-        vscode.TextEdit.replace(
-          new vscode.Range(
-            document.positionAt(0),
-            document.lineAt(document.lineCount - 1).range.end,
-          ),
-          text + (extensionSettings.get('trailingNewline') ? '\n' : ''),
-        ),
-      ];
-    },
-  });
-
   const languages: { [lang: string]: SqlLanguage } = {
     'sql': 'sql',
     'plsql': 'plsql',
@@ -50,7 +20,7 @@ export function activate(context: vscode.ExtensionContext) {
     context.subscriptions.push(
       vscode.languages.registerDocumentFormattingEditProvider(
         vscodeLang,
-        createFormattingProvider(prettierLang),
+        new SqlFormattingProvider(prettierLang),
       ),
     ),
   );
