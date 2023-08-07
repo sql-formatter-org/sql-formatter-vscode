@@ -1,11 +1,10 @@
 {
   "parser": "@typescript-eslint/parser",
   "parserOptions": { "project": "./tsconfig.json", "ecmaVersion": 6, "sourceType": "module" },
-  "extends": ["prettier"],
+  "extends": ["eslint:recommended", "prettier"],
   "plugins": ["@typescript-eslint", "prettier"],
   "globals": {
-    "document": true,
-    "sqlFormatter": true
+    "suite": true
   },
   "rules": {
     "class-methods-use-this": "off",
@@ -39,14 +38,8 @@
     "@typescript-eslint/no-non-null-assertion": "error",
     "@typescript-eslint/consistent-type-exports": "error"
   },
-  "settings": {
-    "import/resolver": {
-      "node": {
-        "extensions": [".js", ".ts"]
-      }
-    }
-  },
   "env": {
-    "jest": true
+    "jest": true,
+    "node": true
   }
 }
