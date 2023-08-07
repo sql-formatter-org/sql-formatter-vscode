@@ -23,10 +23,39 @@ WHERE
       document.getText(),
     );
   });
+
+  test('formats selection in file', async () => {
+    const editor = await loadFile('selection.sql');
+
+    editor.selection = new vscode.Selection(2, 0, 2, 18);
+    await sleep(120);
+
+    await vscode.commands.executeCommand('sql-formatter-vscode.format-selection');
+
+    await sleep(120);
+    assert.equal(
+      `SELECT * FROM foo;
+
+SELECT
+    *
+FROM
+    bar;
+
+SELECT * FROM zap;
+`,
+      editor.document.getText(),
+    );
+  });
 });
 
 async function loadFile(fileName: string): Promise<vscode.TextEditor> {
   const uri = vscode.Uri.file(path.join(__dirname + '/../../../test-data/' + fileName));
   const document = await vscode.workspace.openTextDocument(uri);
   return await vscode.window.showTextDocument(document);
+}
+
+function sleep(ms: number): Promise<void> {
+  return new Promise(resolve => {
+    setTimeout(resolve, ms);
+  });
 }
