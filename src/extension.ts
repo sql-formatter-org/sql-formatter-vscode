@@ -7,15 +7,15 @@ import {
   CommaPosition,
   LogicalOperatorNewline,
   FormatOptionsWithLanguage,
-  FormatOptions
+  FormatOptions,
 } from 'sql-formatter';
 
-type ParamTypes = FormatOptions["paramTypes"];
+type ParamTypes = FormatOptions['paramTypes'];
 
 const getConfigs = (
   extensionSettings: vscode.WorkspaceConfiguration,
   formattingOptions: vscode.FormattingOptions,
-  language: SqlLanguage
+  language: SqlLanguage,
 ): Partial<FormatOptionsWithLanguage> => {
   return {
     language:
@@ -32,13 +32,13 @@ const getConfigs = (
     linesBetweenQueries: extensionSettings.get<number>('linesBetweenQueries'),
     denseOperators: extensionSettings.get<boolean>('denseOperators'),
     newlineBeforeSemicolon: extensionSettings.get<boolean>('newlineBeforeSemicolon'),
-    paramTypes: extensionSettings.get<ParamTypes>('paramTypes')
+    paramTypes: extensionSettings.get<ParamTypes>('paramTypes'),
   };
 };
 
 const getIndentationConfig = (
   extensionSettings: vscode.WorkspaceConfiguration,
-  formattingOptions: vscode.FormattingOptions
+  formattingOptions: vscode.FormattingOptions,
 ): Partial<FormatOptionsWithLanguage> => {
   // override tab settings if ignoreTabSettings is true
   if (extensionSettings.get<boolean>('ignoreTabSettings')) {
@@ -58,7 +58,7 @@ export function activate(context: vscode.ExtensionContext) {
   const formatProvider = (language: SqlLanguage) => ({
     provideDocumentFormattingEdits(
       document: vscode.TextDocument,
-      formattingOptions: vscode.FormattingOptions
+      formattingOptions: vscode.FormattingOptions,
     ): vscode.TextEdit[] {
       const extensionSettings = vscode.workspace.getConfiguration('SQL-Formatter-VSCode');
       const formatConfigs = getConfigs(extensionSettings, formattingOptions, language);
@@ -78,9 +78,9 @@ export function activate(context: vscode.ExtensionContext) {
         vscode.TextEdit.replace(
           new vscode.Range(
             document.positionAt(0),
-            document.lineAt(document.lineCount - 1).range.end
+            document.lineAt(document.lineCount - 1).range.end,
           ),
-          text + (extensionSettings.get('trailingNewline') ? '\n' : '')
+          text + (extensionSettings.get('trailingNewline') ? '\n' : ''),
         ),
       ];
     },
@@ -102,9 +102,9 @@ export function activate(context: vscode.ExtensionContext) {
     context.subscriptions.push(
       vscode.languages.registerDocumentFormattingEditProvider(
         vscodeLang,
-        formatProvider(prettierLang)
-      )
-    )
+        formatProvider(prettierLang),
+      ),
+    ),
   );
 
   const formatSelectionCommand = vscode.commands.registerCommand(
@@ -129,20 +129,20 @@ export function activate(context: vscode.ExtensionContext) {
           tabSize: editor.options.tabSize as number,
           insertSpaces: editor.options.insertSpaces as boolean,
         },
-        formatterLanguage
+        formatterLanguage,
       );
 
       try {
         // format and replace each selection
         editor.edit(editBuilder => {
           editor.selections.forEach(sel =>
-            editBuilder.replace(sel, format(editor.document.getText(sel), formatConfigs))
+            editBuilder.replace(sel, format(editor.document.getText(sel), formatConfigs)),
           );
         });
       } catch (e) {
         vscode.window.showErrorMessage('Unable to format SQL:\n' + e);
       }
-    }
+    },
   );
 
   context.subscriptions.push(formatSelectionCommand);
