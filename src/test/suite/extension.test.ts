@@ -23,6 +23,7 @@ WHERE
 `,
       document.getText(),
     );
+    await cleanup();
   });
 
   test('formats SQL file without trailing newline', async () => {
@@ -44,9 +45,10 @@ WHERE
     AND salary BETWEEN 1000 AND 2000;`,
       document.getText(),
     );
+    await cleanup();
   });
 
-  test('formats selection in file', async () => {
+  test('formats selection', async () => {
     const editor = await loadFile('selection.sql');
 
     editor.selection = new vscode.Selection(2, 0, 2, 18);
@@ -67,6 +69,7 @@ SELECT * FROM zap;
 `,
       editor.document.getText(),
     );
+    await cleanup();
   });
 });
 
@@ -80,4 +83,8 @@ function sleep(ms: number): Promise<void> {
   return new Promise(resolve => {
     setTimeout(resolve, ms);
   });
+}
+
+async function cleanup() {
+  await vscode.commands.executeCommand('workbench.action.closeActiveEditor');
 }
