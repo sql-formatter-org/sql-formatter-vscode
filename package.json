@@ -240,11 +240,6 @@
           "default": false,
           "markdownDescription": "Whether to place semicolon on its own line or on previous line"
         },
-        "SQL-Formatter-VSCode.trailingNewline": {
-          "type": "boolean",
-          "default": false,
-          "markdownDescription": "Whether to ensure there is a trailing newline at the end of the file"
-        },
         "SQL-Formatter-VSCode.paramTypes": {
           "type": "object",
           "markdownDescription": "Specifies parameter placeholders types to support."

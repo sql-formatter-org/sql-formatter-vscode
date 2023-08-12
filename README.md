@@ -53,8 +53,6 @@ Supports the following SQL Dialects:
 
 - `newlineBeforeSemicolon`: Whether to place semicolon on its own line or on previous line
 
-- `trailingNewline`: Whether to ensure there is a trailing newline at the end of the file
-
 - `paramTypes`: Specifies parameter placeholders types to support
 
 ## Having a problem?

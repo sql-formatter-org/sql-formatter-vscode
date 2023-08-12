@@ -37,6 +37,6 @@ export class SqlFormattingProvider implements vscode.DocumentFormattingEditProvi
   private formatText(text: string, formattingOptions: vscode.FormattingOptions) {
     const extensionSettings = vscode.workspace.getConfiguration('SQL-Formatter-VSCode');
     const formatConfig = createConfig(extensionSettings, formattingOptions, this.language);
-    return format(text, formatConfig) + (extensionSettings.get('trailingNewline') ? '\n' : '');
+    return format(text, formatConfig);
   }
 }
