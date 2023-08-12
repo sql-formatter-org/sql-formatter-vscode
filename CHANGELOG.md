@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## upcoming...
+## [2.1.0] - 2023-08-12
 
 - Auto-detect trailing newline when formatting a file or a selection.
   Dropping the old obscure `trailingNewline` config option.
