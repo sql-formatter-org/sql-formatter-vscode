@@ -8,6 +8,7 @@ export const sqlDialects: { [lang: string]: SqlLanguage } = {
   'hql': 'hive',
   'hive-sql': 'hive',
   'snowflake': 'snowflake',
+  'snowflake-sql': 'snowflake',
   'sql-bigquery': 'bigquery',
   'sqlite': 'sqlite',
 };
