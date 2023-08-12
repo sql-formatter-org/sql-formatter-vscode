@@ -15,7 +15,7 @@ export const createConfig = (
   extensionSettings: vscode.WorkspaceConfiguration,
   formattingOptions: vscode.FormattingOptions,
   language: SqlLanguage,
-): Partial<FormatOptionsWithLanguage> => {
+): FormatOptionsWithLanguage => {
   return {
     language:
       language === 'sql' // override default SQL language mode if SQLFlavourOverride is set
@@ -38,7 +38,7 @@ export const createConfig = (
 const createIndentationConfig = (
   extensionSettings: vscode.WorkspaceConfiguration,
   formattingOptions: vscode.FormattingOptions,
-): Partial<FormatOptionsWithLanguage> => {
+): FormatOptionsWithLanguage => {
   // override tab settings if ignoreTabSettings is true
   if (extensionSettings.get<boolean>('ignoreTabSettings')) {
     return {
