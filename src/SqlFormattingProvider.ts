@@ -1,7 +1,7 @@
 import * as vscode from 'vscode';
-import { SqlLanguage, format } from 'sql-formatter';
+import { SqlLanguage } from 'sql-formatter';
 import { createConfig } from './config';
-import { endsWithNewline } from './stringUtils';
+import { formatEditorText } from './formatEditorText';
 
 export class SqlFormattingProvider implements vscode.DocumentFormattingEditProvider {
   constructor(private language: SqlLanguage) {}
@@ -38,6 +38,6 @@ export class SqlFormattingProvider implements vscode.DocumentFormattingEditProvi
   private formatText(text: string, formattingOptions: vscode.FormattingOptions) {
     const extensionSettings = vscode.workspace.getConfiguration('SQL-Formatter-VSCode');
     const formatConfig = createConfig(extensionSettings, formattingOptions, this.language);
-    return format(text, formatConfig) + (endsWithNewline(text) ? '\n' : '');
+    return formatEditorText(text, formatConfig);
   }
 }

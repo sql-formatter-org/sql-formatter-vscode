@@ -1,8 +1,7 @@
 import * as vscode from 'vscode';
-import { format } from 'sql-formatter';
 import { createConfig } from './config';
 import { sqlDialects } from './sqlDialects';
-import { endsWithNewline } from './stringUtils';
+import { formatEditorText } from './formatEditorText';
 
 export function formatSelection() {
   const editor = vscode.window.activeTextEditor;
@@ -11,10 +10,7 @@ export function formatSelection() {
   }
 
   try {
-    replaceEachSelection(
-      editor,
-      text => format(text, createConfigForEditor(editor)) + (endsWithNewline(text) ? '\n' : ''),
-    );
+    replaceEachSelection(editor, text => formatEditorText(text, createConfigForEditor(editor)));
   } catch (e) {
     vscode.window.showErrorMessage('Unable to format SQL:\n' + e);
   }
