@@ -1,0 +1,1 @@
+SELECT * FROM my_table WHERE age > 10 AND salary BETWEEN 1000 AND 2000;

@@ -19,6 +19,28 @@ FROM
     my_table
 WHERE
     age > 10
+    AND salary BETWEEN 1000 AND 2000;
+`,
+      document.getText(),
+    );
+  });
+
+  test('formats SQL file without trailing newline', async () => {
+    const { document } = await loadFile('example-no-newline.sql');
+    assert.equal(
+      'SELECT * FROM my_table WHERE age > 10 AND salary BETWEEN 1000 AND 2000;',
+      document.getText(),
+    );
+
+    await vscode.commands.executeCommand('editor.action.formatDocument');
+
+    assert.equal(
+      `SELECT
+    *
+FROM
+    my_table
+WHERE
+    age > 10
     AND salary BETWEEN 1000 AND 2000;`,
       document.getText(),
     );
