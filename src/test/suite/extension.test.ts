@@ -71,6 +71,30 @@ SELECT * FROM zap;
     );
     await cleanup();
   });
+
+  test('formats selection including trailing newline', async () => {
+    const editor = await loadFile('selection.sql');
+
+    editor.selection = new vscode.Selection(2, 0, 3, 0);
+    await sleep(120);
+
+    await vscode.commands.executeCommand('sql-formatter-vscode.format-selection');
+
+    await sleep(120);
+    assert.equal(
+      `SELECT * FROM foo;
+
+SELECT
+    *
+FROM
+    bar;
+
+SELECT * FROM zap;
+`,
+      editor.document.getText(),
+    );
+    await cleanup();
+  });
 });
 
 async function loadFile(fileName: string): Promise<vscode.TextEditor> {
