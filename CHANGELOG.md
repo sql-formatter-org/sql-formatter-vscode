@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## [2.1.1] - 2023-09-01
+
+- Upgraded `sql-formatter` to v13.0.0
+
 ## [2.1.0] - 2023-08-12
 
 - Auto-detect trailing newline when formatting a file or a selection.
