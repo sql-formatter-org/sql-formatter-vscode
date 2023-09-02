@@ -80,7 +80,7 @@
     "run-in-browser": "vscode-test-web --browserType=chromium --open-devtools --extensionDevelopmentPath=. ."
   },
   "dependencies": {
-    "sql-formatter": "^12.2.4"
+    "sql-formatter": "^13.0.0"
   },
   "devDependencies": {
     "@types/glob": "^8.1.0",
