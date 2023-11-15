@@ -33,6 +33,7 @@
   "keywords": [
     "bigquery",
     "db2",
+    "db2i",
     "hive",
     "formatter",
     "mariadb",
@@ -131,6 +132,7 @@
             "sql",
             "bigquery",
             "db2",
+            "db2i",
             "hive",
             "mariadb",
             "mysql",

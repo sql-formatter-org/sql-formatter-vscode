@@ -10,7 +10,8 @@ Supports the following SQL Dialects:
 
 - Standard SQL
 - BigQuery
-- DB2
+- DB2 for LUW (Linux, Unix, Windows)
+- DB2 for IBM iSystem
 - Hive
 - MariaDB
 - MySQL
