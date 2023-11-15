@@ -198,26 +198,6 @@
           "default": "before",
           "markdownDescription": "Whether to break before or after AND and OR"
         },
-        "SQL-Formatter-VSCode.tabulateAlias": {
-          "type": "boolean",
-          "default": false,
-          "markdownDescription": "Whether to right-align aliases to the longest line in the SELECT clause"
-        },
-        "SQL-Formatter-VSCode.commaPosition": {
-          "type": "string",
-          "enum": [
-            "before",
-            "after",
-            "tabular"
-          ],
-          "enumDescriptions": [
-            "Comma preceding each column",
-            "Comma following each column",
-            "Comma right-aligned to longest column line"
-          ],
-          "default": "after",
-          "markdownDescription": "Where to place commas for SELECT and GROUP BY clauses"
-        },
         "SQL-Formatter-VSCode.expressionWidth": {
           "type": "integer",
           "default": 50,
