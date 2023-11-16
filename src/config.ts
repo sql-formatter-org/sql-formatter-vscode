@@ -2,6 +2,7 @@ import * as vscode from 'vscode';
 import {
   SqlLanguage,
   KeywordCase,
+  IdentifierCase,
   IndentStyle,
   LogicalOperatorNewline,
   FormatOptionsWithLanguage,
@@ -22,6 +23,7 @@ export const createConfig = (
         : language,
     ...createIndentationConfig(extensionSettings, formattingOptions),
     keywordCase: extensionSettings.get<KeywordCase>('keywordCase'),
+    identifierCase: extensionSettings.get<IdentifierCase>('identifierCase'),
     indentStyle: extensionSettings.get<IndentStyle>('indentStyle'),
     logicalOperatorNewline: extensionSettings.get<LogicalOperatorNewline>('logicalOperatorNewline'),
     expressionWidth: extensionSettings.get<number>('expressionWidth'),

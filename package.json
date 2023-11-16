@@ -176,6 +176,16 @@
           "default": "preserve",
           "markdownDescription": "Whether to print keywords in ALL CAPS, lowercase, or preserve existing"
         },
+        "SQL-Formatter-VSCode.identifierCase": {
+          "type": "string",
+          "enum": [
+            "preserve",
+            "upper",
+            "lower"
+          ],
+          "default": "preserve",
+          "markdownDescription": "Whether to print identifiers in ALL CAPS, lowercase, or preserve existing (experimental)"
+        },
         "SQL-Formatter-VSCode.indentStyle": {
           "type": "string",
           "enum": [

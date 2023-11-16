@@ -38,6 +38,8 @@ Supports the following SQL Dialects:
 
 - `keywordCase`: Whether to print keywords in ALL CAPS or lowercase
 
+- `identifierCase`: Whether to print identifiers in ALL CAPS or lowercase (experimental)
+
 - `indentStyle`: Switched between standard keyword positioning vs maintaining a central space column
 
 - `logicalOperatorNewline`: Whether to break before or after AND and OR
