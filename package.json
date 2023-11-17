@@ -130,7 +130,6 @@
           "type": "string",
           "enum": [
             "auto-detect",
-            "sql",
             "bigquery",
             "db2",
             "db2i",
@@ -146,7 +145,28 @@
             "spark",
             "sqlite",
             "trino",
-            "transactsql"
+            "transactsql",
+            "sql"
+          ],
+          "enumDescriptions": [
+            "Rely on VSCode to detect the relevant SQL dialect.",
+            "Google BigQuery",
+            "IBM DB2 for LUW (Linux, Unix, Windows)",
+            "IBM DB2 for iSystem",
+            "Apache Hive",
+            "MariaDB",
+            "MySQL",
+            "Couchbase N1QL",
+            "Oracle PL/SQL",
+            "PostgreSQL",
+            "Amazon Redshift",
+            "SingleStoreDB",
+            "Snowflake",
+            "Spark",
+            "SQLite",
+            "Trino (should also work for Presto, which is very similar dialect, though technically different)",
+            "Microsoft SQL Server Transact-SQL",
+            "Basic SQL - generally not recommended."
           ],
           "default": "auto-detect",
           "markdownDescription": "The SQL dialect to use.\n\n**It is recommended to explicitly select the SQL dialect you're working with.**\n\nBy default the extension tries to use the SQL language info provided by VSCode. But this only works for some dialects when an extension for that language is installed. If the auto-detection fails, the formatter will default to using 'sql' dialect - which will work for the most basic SQL."
