@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## [3.0.0] ...
+
+- Renamed the confusingly named `SQLFlavourOverride` configuration option to `dialect` and improved documentation.
+
 ## [2.1.2] - 2023-10-31
 
 - Upgraded `sql-formatter` to v13.0.3

@@ -28,7 +28,12 @@ Supports the following SQL Dialects:
 
 ## Configuration
 
-- `SQLFlavourOverride`: Uses custom SQL Flavour to format `sql` files. Use this if you are using the Microsoft PostgreSQL or MSSQL Extensions since they do not provide a new language ID for VSCode.
+- `dialect`: The SQL dialect to use when parsing the SQL files for formatting.
+
+  **It is recommended to explicitly set this option.**
+
+  By default the formatter relies on VSCode to provide it information about the SQL dialect you're using,
+  but this depends heavily on your VSCode environment and other extensions you have installed.
 
 - `ignoreTabSettings`: Whether to ignore VSCode user/workspace settings for `tabSize` and `insertSpaces`
 

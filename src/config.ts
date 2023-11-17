@@ -14,13 +14,11 @@ type ParamTypes = FormatOptions['paramTypes'];
 export const createConfig = (
   extensionSettings: vscode.WorkspaceConfiguration,
   formattingOptions: vscode.FormattingOptions,
-  language: SqlLanguage,
+  detectedDialect: SqlLanguage,
 ): FormatOptionsWithLanguage => {
+  const configuredDialect = extensionSettings.get<SqlLanguage | 'auto-detect'>('dialect');
   return {
-    language:
-      language === 'sql' // override default SQL language mode if SQLFlavourOverride is set
-        ? extensionSettings.get<SqlLanguage>('SQLFlavourOverride') ?? 'sql'
-        : language,
+    language: configuredDialect === 'auto-detect' ? detectedDialect : configuredDialect,
     ...createIndentationConfig(extensionSettings, formattingOptions),
     keywordCase: extensionSettings.get<KeywordCase>('keywordCase'),
     identifierCase: extensionSettings.get<IdentifierCase>('identifierCase'),
