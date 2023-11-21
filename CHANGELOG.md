@@ -1,8 +1,12 @@
 # CHANGELOG
 
-## [3.0.0] ...
+## [3.0.0] - 2023-11-21
 
+- Upgraded `sql-formatter` to v14.0.0
 - Renamed the confusingly named `SQLFlavourOverride` configuration option to `dialect` and improved documentation.
+- Removed `tabulateAlias` and `commaPosition` config options.
+- Added `identiferCase` config option.
+- Added `DB2i` dialect.
 
 ## [2.1.2] - 2023-10-31
 
