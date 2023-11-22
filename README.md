@@ -49,10 +49,6 @@ Supports the following SQL Dialects:
 
 - `logicalOperatorNewline`: Whether to break before or after AND and OR
 
-- `tabulateAlias`: Whether to right-align aliases to the longest line in the SELECT clause
-
-- `commaPosition`: Where to place commas for SELECT and GROUP BY clauses
-
 - `expressionWidth`: Number of characters allowed in each line before breaking
 
 - `linesBetweenQueries`: How many newlines to place between each query / statement
