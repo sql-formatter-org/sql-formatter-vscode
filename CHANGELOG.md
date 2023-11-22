@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## [3.0.1] - 2023-11-22
+
+- Removed `tabulateAlias` and `commaPosition` config options also from README.
+
 ## [3.0.0] - 2023-11-21
 
 - Upgraded `sql-formatter` to v14.0.0
