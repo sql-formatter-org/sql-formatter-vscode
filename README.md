@@ -43,6 +43,10 @@ Supports the following SQL Dialects:
 
 - `keywordCase`: Whether to print keywords in ALL CAPS or lowercase
 
+- `dataTypeCase`: Whether to print data types in ALL CAPS or lowercase
+
+- `functionCase`: Whether to print function names in ALL CAPS or lowercase
+
 - `identifierCase`: Whether to print identifiers in ALL CAPS or lowercase (experimental)
 
 - `indentStyle`: Switched between standard keyword positioning vs maintaining a central space column

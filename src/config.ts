@@ -21,6 +21,8 @@ export const createConfig = (
     language: configuredDialect === 'auto-detect' ? detectedDialect : configuredDialect,
     ...createIndentationConfig(extensionSettings, formattingOptions),
     keywordCase: extensionSettings.get<KeywordCase>('keywordCase'),
+    dataTypeCase: extensionSettings.get<KeywordCase>('dataTypeCase'),
+    functionCase: extensionSettings.get<KeywordCase>('functionCase'),
     identifierCase: extensionSettings.get<IdentifierCase>('identifierCase'),
     indentStyle: extensionSettings.get<IndentStyle>('indentStyle'),
     logicalOperatorNewline: extensionSettings.get<LogicalOperatorNewline>('logicalOperatorNewline'),
