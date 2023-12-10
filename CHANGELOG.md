@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [4.0.0] - 2023-12-10
+
+- Upgraded `sql-formatter` to v15.0.2
+- Added `dataTypeCase` config option.
+- Added `functionCase` config option.
+
 ## [3.0.1] - 2023-11-22
 
 - Removed `tabulateAlias` and `commaPosition` config options also from README.
