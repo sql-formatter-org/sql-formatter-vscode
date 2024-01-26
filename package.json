@@ -255,7 +255,7 @@
           "type": "integer",
           "default": 50,
           "minimum": 0,
-          "markdownDescription": "Number of characters allowed in each line before breaking"
+          "markdownDescription": "Maximum number of characters between pair of parenthesis before breaking the expression to multiple lines"
         },
         "SQL-Formatter-VSCode.linesBetweenQueries": {
           "type": "integer",
