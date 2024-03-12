@@ -14,7 +14,7 @@ export class SqlFormattingProvider implements vscode.DocumentFormattingEditProvi
       return [
         vscode.TextEdit.replace(
           this.fullDocumentRange(document),
-          this.formatText(this.getAllText(document), formattingOptions),
+          this.formatText(this.getAllText(document), formattingOptions, document.uri),
         ),
       ];
     } catch (e) {
@@ -35,8 +35,8 @@ export class SqlFormattingProvider implements vscode.DocumentFormattingEditProvi
     );
   }
 
-  private formatText(text: string, formattingOptions: vscode.FormattingOptions) {
-    const extensionSettings = vscode.workspace.getConfiguration('SQL-Formatter-VSCode');
+  private formatText(text: string, formattingOptions: vscode.FormattingOptions, uri: vscode.Uri) {
+    const extensionSettings = vscode.workspace.getConfiguration('SQL-Formatter-VSCode', uri);
     const formatConfig = createConfig(extensionSettings, formattingOptions, this.language);
     return formatEditorText(text, formatConfig);
   }
