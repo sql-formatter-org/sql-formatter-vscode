@@ -2665,10 +2665,10 @@ slash@^3.0.0:
   resolved "https://registry.yarnpkg.com/slash/-/slash-3.0.0.tgz#6539be870c165adbd5240220dbe361f1bc4d4634"
   integrity sha512-g9Q1haeby36OSStwb4ntCGGGaKsaVSjQ68fBxoQcutl5fS1vuY18H3wSt3jFyFtrkx+Kz0V1G85A4MyAdDMi2Q==
 
-sql-formatter@^15.1.1:
-  version "15.1.1"
-  resolved "https://registry.yarnpkg.com/sql-formatter/-/sql-formatter-15.1.1.tgz#fea9f1b41f013ca5713b44ae2aba3308a90eee9e"
-  integrity sha512-JRmgWOQFwdeg5oQXecofL0GRO7Giq09zwyM7dNsNrCEdV37aQUwzI3EgE+dUr8Bo5g1XWMsnRKrSXSc4CWHiWw==
+sql-formatter@^15.3.0:
+  version "15.3.0"
+  resolved "https://registry.yarnpkg.com/sql-formatter/-/sql-formatter-15.3.0.tgz#d6daec93b5d3fd053f40295a306f5440cc578849"
+  integrity sha512-1aDYVEX+dwOSCkRYns4HEGupRZoaivcsNpU4IzR+MVC+cWFYK9/dce7pr4aId4+ED2iK9PNs3j1Vdf8C+SIvDg==
   dependencies:
     argparse "^2.0.1"
     get-stdin "=8.0.0"
