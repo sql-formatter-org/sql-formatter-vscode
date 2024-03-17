@@ -55,6 +55,7 @@
     "sql",
     "sqlite",
     "sql server",
+    "tidb",
     "trino",
     "transactsql",
     "tsql"
@@ -144,6 +145,7 @@
             "snowflake",
             "spark",
             "sqlite",
+            "tidb",
             "trino",
             "transactsql",
             "sql"
@@ -164,6 +166,7 @@
             "Snowflake",
             "Spark",
             "SQLite",
+            "TiDB",
             "Trino (should also work for Presto, which is very similar dialect, though technically different)",
             "Microsoft SQL Server Transact-SQL",
             "Basic SQL - generally not recommended."
