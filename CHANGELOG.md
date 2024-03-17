@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## [4.1.0] - 2024-03-17
+
+- Upgraded `sql-formatter` to v15.3.0
+- Enabled reading of folder-based VSCode config (thanks to Heungsub Lee)
+
 ## [4.0.2] - 2024-01-22
 
 - Upgraded `sql-formatter` to v15.1.1
