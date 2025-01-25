@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## [4.1.7] - 2025-01-05
+
+- Upgraded `sql-formatter` to v15.4.10
+
 ## [4.1.6] - 2025-01-05
 
 - Upgraded `sql-formatter` to v15.4.9
