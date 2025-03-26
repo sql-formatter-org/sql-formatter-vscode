@@ -67,7 +67,7 @@ Supports the following SQL Dialects:
 
 Please report issues to [SQL Formatter library Github page][issues].
 
-This extension and the sql-formatter libary share the same issue tracker,
+This extension and the sql-formatter library share the same issue tracker,
 as the authors of both are the same and the bugs reported about the VSCode
 extension are really mostly bugs in the underlying formatter library.
 
