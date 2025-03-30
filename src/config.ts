@@ -10,6 +10,7 @@ import {
   FormatOptionsWithLanguage,
   FormatOptions,
 } from 'sql-formatter';
+import { validateConfig } from 'sql-formatter/dist/cjs/validateConfig';
 
 type ParamTypes = FormatOptions['paramTypes'];
 
@@ -51,5 +52,21 @@ const createIndentationConfig = (
       tabWidth: formattingOptions.tabSize,
       useTabs: !formattingOptions.insertSpaces,
     };
+  }
+};
+
+export const getConfigFromPath = async (
+  configFilePath: string,
+): Promise<FormatOptionsWithLanguage | undefined> => {
+  try {
+    const fileContent = await vscode.workspace.fs.readFile(vscode.Uri.file(configFilePath));
+    const configString = Buffer.from(fileContent).toString('utf8');
+    const parsed = JSON.parse(configString);
+    return validateConfig(parsed);
+  } catch (error) {
+    vscode.window.showErrorMessage(
+      `Unable to read config file from path ${configFilePath}:\n${error}`,
+    );
+    return undefined;
   }
 };
