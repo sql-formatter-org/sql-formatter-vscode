@@ -1,12 +1,23 @@
 # SQL Formatter VSCode [![version number](https://img.shields.io/visual-studio-marketplace/v/ReneSaarsoo.sql-formatter-vsc?label=vscode)](https://marketplace.visualstudio.com/items?itemName=ReneSaarsoo.sql-formatter-vsc)
 
-Formats SQL files using the [sql-formatter][] library.
+Official VSCode Extension of the [SQL Formatter][sql-formatter] library
 
-**Note:** _This extension is a direct successor of **Prettier SQL VSCode** extension, which is no more maintained._
+**Note:** _This extension is a direct successor of **Prettier SQL VSCode** extension,
+which is no more maintained._
 
-Supports the following SQL Dialects:
+## Setup
 
-- Standard SQL
+By default the formatter relies on VSCode to provide it information
+about the SQL dialect you're using, but this depends heavily on your
+VSCode environment and other extensions you have installed.
+
+When it fails do detect any specific dialect it will default to
+"generic" SQL. This will work for the most basic and common SQL statements.
+
+To get better results when formatting, please configure the dialect
+you're using by setting the `dialect` option in extension settings
+to target one of the following:
+
 - BigQuery
 - DB2 for LUW (Linux, Unix, Windows)
 - DB2 for IBM iSystem
@@ -27,11 +38,6 @@ Supports the following SQL Dialects:
 ## Configuration
 
 - `dialect`: The SQL dialect to use when parsing the SQL files for formatting.
-
-  **It is recommended to explicitly set this option.**
-
-  By default the formatter relies on VSCode to provide it information about the SQL dialect you're using,
-  but this depends heavily on your VSCode environment and other extensions you have installed.
 
 - `ignoreTabSettings`: Whether to ignore VSCode user/workspace settings for `tabSize` and `insertSpaces`
 
