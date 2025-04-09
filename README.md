@@ -1,6 +1,6 @@
 # SQL Formatter VSCode [![version number](https://img.shields.io/visual-studio-marketplace/v/ReneSaarsoo.sql-formatter-vsc?label=vscode)](https://marketplace.visualstudio.com/items?itemName=ReneSaarsoo.sql-formatter-vsc)
 
-Official VSCode Extension of the [SQL Formatter][sql-formatter] library
+Official VSCode Extension of the [SQL Formatter][sql-formatter] library.
 
 **Note:** _This extension is a direct successor of **Prettier SQL VSCode** extension,
 which is no more maintained._
