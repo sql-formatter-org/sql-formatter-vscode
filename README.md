@@ -78,15 +78,6 @@ extension are really mostly bugs in the underlying formatter library.
 Don't worry about this difference though when reporting problems.
 But do [read the FAQ][faq] before filing your report.
 
-## Release process
-
-- Bump the version number
-- Add entry to changelog
-- Commit and tag the version
-- run `yarn vsce:package`
-- Go to [VSCode marketplace](https://marketplace.visualstudio.com/manage/publishers/renesaarsoo)
-- Select SQL Formatter VSCode -> Update
-
 [sql-formatter]: https://github.com/sql-formatter-org/sql-formatter
 [issues]: https://github.com/sql-formatter-org/sql-formatter/issues
 [faq]: https://github.com/sql-formatter-org/sql-formatter#frequently-asked-questions
