@@ -280,6 +280,10 @@
         "SQL-Formatter-VSCode.paramTypes": {
           "type": "object",
           "markdownDescription": "Specifies parameter placeholders types to support."
+        },
+        "SQL-Formatter-VSCode.configFilePath": {
+          "type": "string",
+          "markdownDescription": "Specifies the path to the configuration file to configure sql-formatter; takes precedence over other settings."
         }
       }
     }
