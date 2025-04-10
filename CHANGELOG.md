@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## [4.1.9] - 2025-01-05
+
+- Change icon and README, because VSCode marketplace team doesn't like
+  how similar this extension is to the Prettier SQL extension.
+
 ## [4.1.8] - 2025-01-05
 
 - Upgraded `sql-formatter` to v15.5.2
