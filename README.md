@@ -21,6 +21,7 @@ to target one of the following:
 - BigQuery
 - DB2 for LUW (Linux, Unix, Windows)
 - DB2 for IBM iSystem
+- DuckDB
 - Hive
 - MariaDB
 - MySQL
