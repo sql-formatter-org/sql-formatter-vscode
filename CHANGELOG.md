@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## [4.2.0] - 2025-05-21
+
+- Upgraded `sql-formatter` to v15.6.2
+- New dialect: `DuckDB`
+
 ## [4.1.9] - 2025-01-05
 
 - Change icon and README, because VSCode marketplace team doesn't like
