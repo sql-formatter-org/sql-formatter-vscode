@@ -80,7 +80,8 @@
     "test": "node ./out/test/runTest.js",
     "vsce:package": "vsce package",
     "vsce:publish": "vsce publish",
-    "run-in-browser": "vscode-test-web --browserType=chromium --open-devtools --extensionDevelopmentPath=. ."
+    "run-in-browser": "vscode-test-web --browserType=chromium --open-devtools --extensionDevelopmentPath=. .",
+    "upgrade-sql-formatter": "bash upgrade-sql-formatter.sh"
   },
   "dependencies": {
     "sql-formatter": "^15.6.4"
