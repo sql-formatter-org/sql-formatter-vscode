@@ -2660,10 +2660,10 @@ slash@^3.0.0:
   resolved "https://registry.npmjs.org/slash/-/slash-3.0.0.tgz"
   integrity sha512-g9Q1haeby36OSStwb4ntCGGGaKsaVSjQ68fBxoQcutl5fS1vuY18H3wSt3jFyFtrkx+Kz0V1G85A4MyAdDMi2Q==
 
-sql-formatter@^15.6.4:
-  version "15.6.4"
-  resolved "https://registry.npmjs.org/sql-formatter/-/sql-formatter-15.6.4.tgz"
-  integrity sha512-osSvFAtUu/SqT4ywdPTraCHR/VzMjeG+cXFEGwJJtm2SoA/uewU6Sm2HYyqo6W7VTGSWUWx7WT8KkE3HJq51cA==
+sql-formatter@^15.6.5:
+  version "15.6.5"
+  resolved "https://registry.yarnpkg.com/sql-formatter/-/sql-formatter-15.6.5.tgz#f57f49013a7b14c3239a49b033b02b0c03758285"
+  integrity sha512-fr4TyM1udCSrOHOmouotwUi8dxIDhSLpYNmPePGFVzxq8/i8jd828IapE49QXG7Gzkswxo5WwdAGnYX4YpKoTg==
   dependencies:
     argparse "^2.0.1"
     nearley "^2.20.1"
