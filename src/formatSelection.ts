@@ -1,16 +1,17 @@
 import * as vscode from 'vscode';
-import { createConfig } from './config';
+import { createConfig, getConfigFromPath } from './config';
 import { sqlDialects } from './sqlDialects';
 import { formatEditorText } from './formatEditorText';
 
-export function formatSelection() {
+export async function formatSelection() {
   const editor = vscode.window.activeTextEditor;
   if (!editor) {
     return;
   }
 
   try {
-    replaceEachSelection(editor, text => formatEditorText(text, createConfigForEditor(editor)));
+    const config = await createConfigForEditor(editor);
+    replaceEachSelection(editor, text => formatEditorText(text, config));
   } catch (e) {
     vscode.window.showErrorMessage('Unable to format SQL:\n' + e);
   }
@@ -22,12 +23,16 @@ function replaceEachSelection(editor: vscode.TextEditor, fn: (code: string) => s
   });
 }
 
-const createConfigForEditor = (editor: vscode.TextEditor) =>
-  createConfig(
-    vscode.workspace.getConfiguration('SQL-Formatter-VSCode'),
-    editorFormattingOptions(editor),
-    detectSqlDialect(editor),
+const createConfigForEditor = async (editor: vscode.TextEditor) => {
+  const extensionConfiguration = vscode.workspace.getConfiguration('SQL-Formatter-VSCode');
+  const configFilePath = extensionConfiguration.get<string>('configFilePath');
+  const configFromPath = configFilePath ? await getConfigFromPath(configFilePath) : undefined;
+  const formattingOptions = editorFormattingOptions(editor);
+  const detectedSqlDialect = detectSqlDialect(editor);
+  return (
+    configFromPath ?? createConfig(extensionConfiguration, formattingOptions, detectedSqlDialect)
   );
+};
 
 const detectSqlDialect = (editor: vscode.TextEditor) =>
   sqlDialects[editor.document.languageId] ?? 'sql';
