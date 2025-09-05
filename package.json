@@ -2,7 +2,7 @@
   "name": "sql-formatter-vsc",
   "displayName": "SQL Formatter VSCode",
   "description": "Official VSCode Extension of SQL Formatter library",
-  "version": "4.2.2",
+  "version": "4.2.3",
   "publisher": "ReneSaarsoo",
   "contributors": [
     "Ben (benfdking)",
@@ -84,7 +84,7 @@
     "upgrade-sql-formatter": "bash upgrade-sql-formatter.sh"
   },
   "dependencies": {
-    "sql-formatter": "^15.6.5"
+    "sql-formatter": "^15.6.8"
   },
   "devDependencies": {
     "@types/glob": "^8.1.0",
