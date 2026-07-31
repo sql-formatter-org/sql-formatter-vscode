@@ -1,4 +1,4 @@
-# SQL Formatter VSCode [![version number](https://img.shields.io/visual-studio-marketplace/v/ReneSaarsoo.sql-formatter-vsc?label=vscode)](https://marketplace.visualstudio.com/items?itemName=ReneSaarsoo.sql-formatter-vsc)
+# SQL Formatter VSCode [![version number](https://badgen.net/vs-marketplace/v/ReneSaarsoo.sql-formatter-vsc)](https://marketplace.visualstudio.com/items?itemName=ReneSaarsoo.sql-formatter-vsc)
 
 Official VSCode Extension of the [SQL Formatter][sql-formatter] library.
 
